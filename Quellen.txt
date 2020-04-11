@@ -1,0 +1,2 @@
+1) Entity Framework in the Enterprise von julie Lerman 2016 https://app.pluralsight.com/library/courses/entity-framework-enterprise-update/table-of-contents
+2)
