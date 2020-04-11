@@ -22,7 +22,7 @@ namespace DataAccessLayer.Repository
         //_context.Customer.OrderBy( o => o.CustomerId).Skip(s => 20).Take(10).ToList();
         public List<Customer> All()
         {
-            return DbContext.Customer.OrderBy( o => o.CustomerId).Take(100).AsNoTracking().ToList();
+            return DbContext.Customer.OrderBy( o => o.CustomerId).Take(500).AsNoTracking().ToList();
         }
 
         public IQueryable<Customer> AsIQueryableAll()

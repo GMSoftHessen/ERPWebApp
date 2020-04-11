@@ -3,13 +3,13 @@
     xtype: 'app-calendar',
 
     requires: [
-		 'Ext.calendar.panel.Panel'
+		// 'Ext.calendar.panel.Panel'
     ],
 
     layout: 'fit',
 
     items: [{
-    	 xtype: 'calendar'
+    	// xtype: 'calendar'
     	//views: {
     	//	day: {
     	//		startTime: 6,

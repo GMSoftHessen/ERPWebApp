@@ -60,11 +60,13 @@
     	layout: 'card',
     	items:
             [{
-            	xtype: 'sales-customerview',
-            	id: 'card-map'
+               // xtype: 'app-calendar'
+                xtype: 'sales-customerview',
+                id: 'card-map'
             },
              {
-                 xtype: 'app-calendar'
+                 html :'test'
+               
             }]
 
     }]

@@ -22,7 +22,7 @@ namespace BusinessLayer.Customize
         #endregion private meber
 
         #region ctr
-        public CustomerRepository() :base(100)
+        public CustomerRepository() :base(500)
             
         {
             

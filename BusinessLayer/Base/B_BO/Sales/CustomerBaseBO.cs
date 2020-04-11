@@ -8,7 +8,16 @@ namespace BusinessLayer.BO
    public abstract class CustomerBaseBO 
     {
         ICustomerRepository _ICustomerRepository;
-        ChinookDbContext _DbContext  = new ChinookDbContext();
+
+     
+
+        public ChinookDbContext _DbContext
+        {
+            get { return new ChinookDbContext(); }
+          
+        }
+
+        
         public CustomerBaseBO(ICustomerRepository customerRepository)
         {
             _ICustomerRepository = customerRepository;

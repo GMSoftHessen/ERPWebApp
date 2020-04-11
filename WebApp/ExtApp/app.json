@@ -16,8 +16,7 @@
      *      ]
      */
   "requires": [
-    "font-awesome",
-    "calendar"
+    "font-awesome"
   ],
 
     /**
