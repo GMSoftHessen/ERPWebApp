@@ -54,26 +54,26 @@
 	},
 
 	repaintList: function (treelist, microMode) {
-		treelist.getStore().getRoot().cascade(function (node) {
-			var item, toolElement;
+		//treelist.getStore().getRoot().cascade(function (node) {
+		//	var item, toolElement;
 
-			item = treelist.getItem(node);
+		//	item = treelist.getItem(node);
 
-			if (item && item.isTreeListItem) {
-				if (microMode) {
-					toolElement = item.getToolElement();
+		//	if (item && item.isTreeListItem) {
+		//		if (microMode) {
+		//			toolElement = item.getToolElement();
 
-					if (toolElement && toolElement.isVisible(true)) {
-						toolElement.syncRepaint();
-					}
-				}
-				else {
-					if (item.element.isVisible(true)) {
-						item.iconElement.syncRepaint();
-						item.expanderElement.syncRepaint();
-					}
-				}
-			}
-		});
+		//			if (toolElement && toolElement.isVisible(true)) {
+		//				toolElement.syncRepaint();
+		//			}
+		//		}
+		//		else {
+		//			if (item.element.isVisible(true)) {
+		//				item.iconElement.syncRepaint();
+		//				item.expanderElement.syncRepaint();
+		//			}
+		//		}
+		//	}
+		//});
 	}
 });

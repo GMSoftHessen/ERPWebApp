@@ -53,7 +53,8 @@
 		}]
 	},
     {
-    	xtype: 'carousel',
+        xtype: 'carousel',
+    
     	id: 'customerview-carousel',
     	flex: 2,
 
@@ -65,7 +66,7 @@
                 id: 'card-map'
             },
              {
-                 html :'test'
+                 xtype: 'app-calendar'
                
             }]
 

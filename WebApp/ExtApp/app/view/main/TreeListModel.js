@@ -51,10 +51,11 @@
 						leaf: true
 					}]
 				}, {
-					text: 'Users',
+					text: 'Sales',
 					iconCls: 'x-fa fa-user',
 					children: [{
-						text: 'Tagged',
+                        text: 'Customer',
+                        xtype: 'sales-customer',
 						iconCls: 'x-fa fa-tag',
 						leaf: true
 					}, {

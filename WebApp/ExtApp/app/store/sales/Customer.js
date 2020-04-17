@@ -8,12 +8,14 @@ Ext.define('EddkaApp.store.sales.Customer', {
         
     proxy: {
         type: 'ajax',
-        url: 'http://localhost:57410/api/AllCustomers',
+        url: EddkaApp.view.util.Defaults.BaseUrl +'/api/AllCustomers',
         reader: {
             type: 'json'
            // rootProperty: ''
         }
     },
+    remoteFilter: true,
+    remoteSort: true,
     autoLoad: true
 });
 
