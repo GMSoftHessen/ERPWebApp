@@ -12,6 +12,8 @@ namespace DataAccessLayer.edmx
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ChinookDbContext : DbContext
     {
@@ -26,5 +28,10 @@ namespace DataAccessLayer.edmx
         }
     
         public virtual DbSet<Customer> Customer { get; set; }
+    
+        public virtual ObjectResult<Nullable<long>> GetNextCustomerNumberSequenceValue()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("GetNextCustomerNumberSequenceValue");
+        }
     }
 }

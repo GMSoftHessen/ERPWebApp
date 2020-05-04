@@ -8,6 +8,6 @@ namespace BusinessLayer.Base
 {
    public class MainConfig
     {
-        public static   int CountOfMaxRows = 300;
+        public static int CountOfMaxRows = 300;
     }
 }

@@ -46,6 +46,14 @@ namespace DataAccessLayer.Repository
 
             return customers;
         }
+
+        public string GetNextCustomerNumber()
+        {
+            var nextvalue = DbContext.GetNextCustomerNumberSequenceValue();
+            long? nextSequenceValue = nextvalue.Single();
+
+            return nextSequenceValue.ToString();
+        }
         #endregion GET
 
         #region CURD

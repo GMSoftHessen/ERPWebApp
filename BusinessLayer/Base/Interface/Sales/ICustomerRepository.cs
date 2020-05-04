@@ -11,6 +11,7 @@ namespace BusinessLayer.Base
         void Delete(int id);
         void Update(Customer customer);
         void Insert(Customer customer);
+        string GetNextCustomerNumber();
 
 
 

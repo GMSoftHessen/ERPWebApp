@@ -45,6 +45,24 @@ namespace BusinessLayer.BO
             }
         }
 
+
+        public string GetNextCustomerNumber()
+        {
+            try
+            { 
+                using (_ICustomerRepository.DbContext = _DbContext)
+                {
+                    string nextValue = _ICustomerRepository.GetNextCustomerNumber();
+
+                    return nextValue;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
         public Customer Find(int id)
         {
             try

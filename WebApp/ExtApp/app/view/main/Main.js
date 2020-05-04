@@ -20,7 +20,7 @@ Ext.define('EddkaApp.view.main.Main', {
 
     items: [{
       
-        title: 'Dock Top',
+        title: 'Hauptmenü',
         docked: 'top',
         minHeight: 100,
         resizable: {           
@@ -36,7 +36,7 @@ Ext.define('EddkaApp.view.main.Main', {
         }],
     },
     {
-        title: 'Dock Left',
+        title: 'Hauptmenue',
         docked: 'left',   
          flex: 1,
         minWidth: 300,

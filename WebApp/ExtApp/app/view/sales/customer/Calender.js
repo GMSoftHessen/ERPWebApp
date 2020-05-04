@@ -1,40 +1,39 @@
 ﻿Ext.define('EddkaApp.view.sales.customer.Calender', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.calendar.panel.Panel',
     xtype: 'app-calendar',
 
-    requires: [
-		 'Ext.calendar.panel.Panel'
-    ],
+    config: {
+        calendarList: {
+            padding: 8
+        },
+        sideBar: {
+            ui: 'default',
+            bodyPadding: 0,
+            title: 'Ext JS Calendar'
+        },
+        sheet: {
+            title: 'Ext JS Calendar',
+            ui: 'default'
+        },
+        sideBarHeader: {
+            weight: -1,
+            margin: '0 0 3em 0'
+        }
+    },
 
-    layout: 'fit',
+    privates: {
+        attachHeader: function (c) {
+            // we need to initialize the header within the panel scope (instead of
+            // the sheet one) to ensure that bindings are correctly resolved.
+            c.items.unshift(this.getSideBarHeader());
+            return c;
+        },
 
-    items: [{
-    	 xtype: 'calendar'
-    	//views: {
-    	//	day: {
-    	//		startTime: 6,
-    	//		endTime: 22
-    	//	}
-           /*,
-    		workweek: {
-    			xtype: 'calendar-week',
-    			titleTpl: '{start:date("j M")} - {end:date("j M")}',
-    			label: 'Work Week',
-    			weight: 15,
-    			dayHeaderFormat: 'D d',
-    			firstDayOfWeek: 1,
-    			visibleDays: 5
-    		}*/
-    	//},
-    	//timezoneOffset: 0
-  /*,
-    	store: {
-    		autoLoad: true,
-    		proxy: {
-    			type: 'ajax',
-    			url: '/KitchenSink/CalendarFull'
-    		}
-    	}*/
-    }]
-
+        createSheet: function () {
+            return this.attachHeader(this.callParent());
+        },
+        createSideBar: function () {
+            return this.attachHeader(this.callParent());
+        }
+    }
 });

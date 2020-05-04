@@ -10,7 +10,7 @@ namespace BusinessLayer.Base
 {
     public abstract class CustomerBaseViewModel
     {
-        ICustomerBO _customerBO;
+        #region abfragen
         public CustomerBaseViewModel(ICustomerBO customerBO)
         {
             _customerBO = customerBO;
@@ -20,7 +20,10 @@ namespace BusinessLayer.Base
         {
             return _customerBO.GetAll();
         }
-
+        public string GetNextCustomerNumber()
+        {
+          return  _customerBO.GetNextCustomerNumber();
+        }
         public Customer Find(int id)
         {
             return _customerBO.Find(id);
@@ -40,5 +43,10 @@ namespace BusinessLayer.Base
         {
             _customerBO.Delete(id);
         }
+        #endregion abfragen
+
+        #region private members
+        private ICustomerBO _customerBO;
+        #endregion private members
     }
 }

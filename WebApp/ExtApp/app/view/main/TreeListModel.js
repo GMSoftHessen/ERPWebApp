@@ -23,14 +23,14 @@
 			root: {
 				expanded: true,
 				children: [{
-					text: 'Admin',
+					text: 'Administration',
 					iconCls: 'x-fa fa-home',
 					children: [{
                         text: 'admin-localisation',
 						iconCls: 'x-fa fa-inbox',
 						leaf: true
 					}, {
-						text: 'Archive',
+						text: 'Finanzwesen',
 						iconCls: 'x-fa fa-database',
 						children: [{
 							text: 'First',
@@ -51,7 +51,7 @@
 						leaf: true
 					}]
 				}, {
-					text: 'Sales',
+                    text: 'Finanzwesen',
 					iconCls: 'x-fa fa-user',
 					children: [{
                         text: 'Customer',
@@ -64,26 +64,69 @@
 						leaf: true
 					}]
 				}, {
-					text: 'Groups',
+					text: 'Verkauf',
 					iconCls: 'x-fa fa-group',
 					leaf: true
-				}, {
-					text: 'Settings',
-					iconCls: 'x-fa fa-wrench',
-					children: [{
-						text: 'Sharing',
-						iconCls: 'x-fa fa-share-alt',
-						leaf: true
-					}, {
-						text: 'Notifications',
-						iconCls: 'x-fa fa-flag',
-						leaf: true
-					}, {
-						text: 'Network',
-						iconCls: 'x-fa fa-signal',
-						leaf: true
-					}]
-				}]
+                    }, {
+                        text: 'Einkauf',
+                        iconCls: 'x-fa fa-wrench',
+                        children: [{
+                            text: 'Sharing',
+                            iconCls: 'x-fa fa-share-alt',
+                            leaf: true
+                        }, {
+                            text: 'Notifications',
+                            iconCls: 'x-fa fa-flag',
+                            leaf: true
+                        }, {
+                            text: 'Network',
+                            iconCls: 'x-fa fa-signal',
+                            leaf: true
+                        }]
+                    },
+                    {
+                        text: 'Geschäftspartner',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Bankenabwicklung',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Lagerverwaltung',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Produktion',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Materialbedarfsplannung',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Service',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Personal',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    },
+                    {
+                        text: 'Berichtauswahl',
+                        iconCls: 'x-fa fa-group',
+                        leaf: true
+                    }
+
+
+				]
 			}
 		}
 	}
