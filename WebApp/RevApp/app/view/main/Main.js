@@ -11,19 +11,9 @@ Ext.define('App.view.main.Main', {
     requires: [
         'Ext.layout.container.Border'
     ],
-    profiles: {
-        classic: {
-            itemHeight: 100
-        },
-        neptune: {
-            itemHeight: 100
-        },
-        graphite: {
-            itemHeight: 120
-        },
-        'classic-material': {
-            itemHeight: 120
-        }
+
+    viewModel: {
+        type: 'tree-list'
     },
     layout: 'border',
     width: 500,
@@ -44,7 +34,7 @@ Ext.define('App.view.main.Main', {
             region: 'west',
             floatable: false,
             margin: '5 0 0 0',
-            width: 270,
+            width: 350,
             minWidth: 100,
             maxWidth: 350,
             xtype: 'main-tabs'
@@ -54,7 +44,7 @@ Ext.define('App.view.main.Main', {
             collapsible: false,
             region: 'center',
             margin: '5 0 0 0',
-            html: '<h2>Main Page</h2><p>This is where the main content would go</p>'
+            xtype:'home'
         }
     ]
     

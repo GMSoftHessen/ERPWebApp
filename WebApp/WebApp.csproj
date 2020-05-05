@@ -5811,6 +5811,10 @@
     <Content Include="RevApp\app\model\Base.js" />
     <Content Include="RevApp\app\model\Personnel.js" />
     <Content Include="RevApp\app\store\Personnel.js" />
+    <Content Include="RevApp\app\view\home\Home.js" />
+    <Content Include="RevApp\app\view\home\HomeController.js" />
+    <Content Include="RevApp\app\view\home\HomeModel.js" />
+    <Content Include="RevApp\app\view\main\Main.js" />
     <Content Include="RevApp\app\view\main\Main.js" />
     <Content Include="RevApp\app\view\main\Tabs.js" />
     <Content Include="RevApp\app\view\main\TreeListController.js" />
