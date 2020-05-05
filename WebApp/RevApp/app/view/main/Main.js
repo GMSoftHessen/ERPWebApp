@@ -21,7 +21,7 @@ Ext.define('App.view.main.Main', {
     cls: Ext.baseCSSPrefix + 'shadow',
 
     bodyBorder: false,
-
+     
     defaults: {
         collapsible: true,
         split: true,

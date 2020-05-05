@@ -12,5 +12,5 @@ Ext.define('App.view.system.currency.CurrencyView',{
         type: 'system-currency-currencyview'
     },
 
-    html: 'Hello, World!!'
+    html: 'Währungen'
 });
