@@ -10,6 +10,6 @@ namespace BusinessLayer.Customize
 {
    public partial class CustomerBO 
     {
-       
+        
     }
 }

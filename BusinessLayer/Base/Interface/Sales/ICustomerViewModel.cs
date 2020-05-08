@@ -1,9 +1,6 @@
-﻿using DataAccessLayer.edmx;
-using System;
+﻿
+using DataAccessLayer.Sales;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Base
 {
@@ -11,9 +8,9 @@ namespace BusinessLayer.Base
     {
         List<Customer> GetAll();
         Customer Find(int id);
-        void Delete(int id);
         void Update(Customer customer);
         int Insert(Customer customer);
-        string GetNextCustomerNumber();
+        void Delete(int id);
+
     }
 }

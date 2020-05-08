@@ -1,5 +1,6 @@
-﻿using BusinessLayer.BO;
-using DataAccessLayer.edmx;
+﻿
+using BusinessLayer.BO;
+using DataAccessLayer.Sales;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,6 @@ namespace BusinessLayer.Base
         {
             return _customerBO.GetAll();
         }
-        public string GetNextCustomerNumber()
-        {
-          return  _customerBO.GetNextCustomerNumber();
-        }
         public Customer Find(int id)
         {
             return _customerBO.Find(id);
@@ -36,7 +33,7 @@ namespace BusinessLayer.Base
 
         public void Update(Customer customer)
         {
-             _customerBO.Update(customer);
+            _customerBO.Update(customer);
         }
 
         public void Delete(int id)

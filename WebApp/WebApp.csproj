@@ -5816,7 +5816,7 @@
     <Content Include="RevApp\app\view\home\HomeModel.js" />
     <Content Include="RevApp\app\view\main\Main.js" />
     <Content Include="RevApp\app\view\main\Tabs.js" />
-    <Content Include="RevApp\app\view\main\TreeListController - Kopieren.js" />
+    <Content Include="RevApp\app\view\main\MainController.js" />
     <Content Include="RevApp\app\view\main\TreeListController.js" />
     <Content Include="RevApp\app\view\main\TreeListModel.js" />
     <Content Include="RevApp\app\view\system\currency\CurrencyView.js" />

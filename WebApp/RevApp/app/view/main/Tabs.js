@@ -10,7 +10,7 @@
         layout: 'center'
 
     },
-   
+
 
     items: [{
         title: 'Application',
@@ -27,10 +27,21 @@
             ui: 'nav',
             scrollable: 'y',
             expanderFirst: false,
-            //micro :true,
             lookupReference: 'treelist-with-nav',
             bind: '{navItems}'
         }],
+        listeners: {
+            click: {
+                element: 'el', //bind to the underlying el property on the panel
+                fn: function () {
+                    mainCard = Ext.getCmp('Center');
+                    mainLayout = mainCard.getLayout();
+
+                    Ext.getCmp('Center').setActiveItem(Ext.create({ xtype: 'sys-currency' }));  
+                    console.log('click el');
+                }
+            }
+        }
 
     }, {
         title: 'Favorites',

@@ -1,5 +1,4 @@
-﻿using DataAccessLayer.edmx;
-using DataAccessLayer.Repository;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

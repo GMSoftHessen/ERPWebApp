@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.edmx;
+﻿
+using DataAccessLayer.Sales;
 using System.Collections.Generic;
 
 namespace BusinessLayer.Base
@@ -10,6 +11,6 @@ namespace BusinessLayer.Base
         void Update(Customer customer);
         int Insert(Customer customer);
         void Delete(int id);
-        string GetNextCustomerNumber();
+
     }
 }

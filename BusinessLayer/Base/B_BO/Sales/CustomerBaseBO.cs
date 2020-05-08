@@ -1,23 +1,22 @@
-﻿using BusinessLayer.Base;
-using DataAccessLayer.edmx;
+﻿
+using BusinessLayer.Base;
+using DataAccessLayer.Sales;
 using System;
 using System.Collections.Generic;
 
 namespace BusinessLayer.BO
 {
-   public abstract class CustomerBaseBO 
+    public abstract class CustomerBaseBO
     {
-        ICustomerRepository _ICustomerRepository;
+        private ICustomerRepository _ICustomerRepository;
 
-     
-
-        public ChinookDbContext _DbContext
+        public SalesDbContext _DbContext
         {
-            get { return new ChinookDbContext(); }
-          
+            get { return new SalesDbContext(); }
+
         }
 
-        
+
         public CustomerBaseBO(ICustomerRepository customerRepository)
         {
             _ICustomerRepository = customerRepository;
@@ -29,7 +28,7 @@ namespace BusinessLayer.BO
             {
                 using (_ICustomerRepository.DbContext = _DbContext)
                 {
-                    List<Customer> customers = _ICustomerRepository.All();                  
+                    List<Customer> customers = _ICustomerRepository.All();
                 }
 
                 using (_ICustomerRepository.DbContext = _DbContext)
@@ -46,22 +45,7 @@ namespace BusinessLayer.BO
         }
 
 
-        public string GetNextCustomerNumber()
-        {
-            try
-            { 
-                using (_ICustomerRepository.DbContext = _DbContext)
-                {
-                    string nextValue = _ICustomerRepository.GetNextCustomerNumber();
 
-                    return nextValue;
-                }
-            }
-            catch (Exception error)
-            {
-                throw error;
-            }
-        }
 
         public Customer Find(int id)
         {
@@ -89,7 +73,7 @@ namespace BusinessLayer.BO
                 {
                     _ICustomerRepository.Insert(customer);
                     _ICustomerRepository.DbContext.SaveChanges();
-                    return customer.CustomerId;
+                    return customer.Id;
                 }
             }
             catch (Exception error)
@@ -107,7 +91,6 @@ namespace BusinessLayer.BO
                 {
                     _ICustomerRepository.Update(customer);
                     _ICustomerRepository.DbContext.SaveChanges();
-                    //return customer.CustomerId;
                 }
             }
             catch (Exception error)
@@ -125,7 +108,6 @@ namespace BusinessLayer.BO
                 {
                     _ICustomerRepository.Delete(id);
                     _ICustomerRepository.DbContext.SaveChanges();
-                    //return customer.CustomerId;
                 }
             }
             catch (Exception error)

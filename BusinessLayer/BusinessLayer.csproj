@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -48,10 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\B_Repository\CustomerBaseRepository.cs" />
     <Compile Include="Base\Config\MainConfig.cs" />
     <Compile Include="Base\Interface\Sales\ICustomerViewModel.cs" />
     <Compile Include="Base\B_ViewModel\CustomerBaseViewModel.cs" />
-    <Compile Include="Base\partial\Sales\CustomizeCTOR\CustomerViewModel.cs" />
+    <Compile Include="Base\partial\Sales\CustomizeCTOR\CustomerViewModel.partial.cs" />
     <Compile Include="Customize\Sales\Customer\CustomerBO.cs" />
     <Compile Include="Customize\Sales\Customer\CustomerRepository.cs" />
     <Compile Include="Customize\Sales\Customer\CustomerViewModel.cs" />
@@ -73,7 +74,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base\B_Repository\" />
     <Folder Include="Customize\Sales\Order\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

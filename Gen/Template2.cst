@@ -1,0 +1,13 @@
+﻿<%@ Template Language="C#" TargetLanguage="C#" Description="An example on creating a class with properties from a database table." %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="DataSource" Optional="False" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.Core.Extensions" %>
+
+public class <%= SourceTable.Name.ToCSharpIdentifier().ToPascalCase() %>
+{
+	// Generate a property for each database column in the selected table.
+	<% foreach (var column in SourceTable.Columns) { %>
+	public <%= column.SystemType.FullName %> <%= column.Name.ToCSharpIdentifier().ToPascalCase() %> { get; set; }
+	<% } %>
+}

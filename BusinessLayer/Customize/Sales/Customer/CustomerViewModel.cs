@@ -1,10 +1,6 @@
-﻿using BusinessLayer.Base;
-using DataAccessLayer.edmx;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using DataAccessLayer.Sales;
+
 
 namespace BusinessLayer.Customize
 {
@@ -15,7 +11,7 @@ namespace BusinessLayer.Customize
         public Customer CreateNewCustomer()
         {
             Customer newCutomer = new Customer();
-
+            
             return newCutomer;
         }
 

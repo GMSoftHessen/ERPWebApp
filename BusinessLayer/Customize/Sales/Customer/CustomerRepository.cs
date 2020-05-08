@@ -9,5 +9,13 @@ namespace BusinessLayer.Customize
     partial class CustomerRepository
     {
 
+
+        //public string GetNextCustomerNumber()
+        // {
+        //     var nextvalue = DbContext.GetNextCustomerNumberSequenceValue();
+        //     long? nextSequenceValue = nextvalue.Single();
+
+        //     return nextSequenceValue.ToString();
+        // }
     }
 }

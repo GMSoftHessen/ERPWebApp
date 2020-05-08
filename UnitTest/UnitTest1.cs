@@ -1,6 +1,6 @@
 ﻿using System;
-using DataAccessLayer.edmx;
-using DataAccessLayer.Repository;
+
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTest

@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
 using BusinessLayer.Customize;
-using DataAccessLayer.edmx;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
@@ -48,10 +47,7 @@ namespace WebApp
 
             // builder.RegisterType<ChinookDbContext>().WithProperty("DbContext", new ChinookDbContext());
 
-            builder.Register(c =>{
-                var DbContext = new ChinookDbContext();
-                return DbContext;
-            });
+           
 
             builder.RegisterAssemblyTypes(typeof(CustomerRepository).Assembly)
                     .Where(t => t.Name.EndsWith("Repository"))                  

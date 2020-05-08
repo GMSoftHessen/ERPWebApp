@@ -40,11 +40,12 @@ Ext.define('App.view.main.Main', {
             xtype: 'main-tabs'
         },
         {
+            id:'Center',
             title: 'Main Content',
             collapsible: false,
             region: 'center',
             margin: '5 0 0 0',
-            xtype:'home'
+            xtype: 'sys-currency'
         }
     ]
     

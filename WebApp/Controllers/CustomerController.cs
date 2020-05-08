@@ -1,11 +1,7 @@
-﻿using BusinessLayer.Base;
-using DataAccessLayer.edmx;
+﻿
+using BusinessLayer.Base;
+using DataAccessLayer.Sales;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace WebApp.Controllers
@@ -34,7 +30,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [Route("Customer/{customerId}")]
+        [Route(" Customer/{ customerId}")]
         [HttpGet]
         public IHttpActionResult GetCustomer(int customerId)
         {
@@ -56,7 +52,7 @@ namespace WebApp.Controllers
 
         [Route("Customer")]
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Customer customer)
+        public IHttpActionResult Post([FromBody]  Customer customer)
         {
             try
             {
@@ -77,11 +73,11 @@ namespace WebApp.Controllers
 
         [Route("Customer/{id}")]
         [HttpPut]
-        public IHttpActionResult Put(int id, [FromBody] Customer customer)
+        public IHttpActionResult Put(int id, [FromBody]  Customer customer)
         {
             try
             {
-                if (id != customer?.CustomerId)
+                if (id != customer?.Id)
                     return BadRequest();
 
                 if (ModelState.IsValid)
@@ -98,7 +94,7 @@ namespace WebApp.Controllers
             return BadRequest();
         }
 
-        [Route("Customer/{id}")]
+        [Route(" Customer/{id}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
