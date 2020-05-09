@@ -120,6 +120,8 @@
     <Content Include="ExtApp\.gitignore" />
     <Content Include="ExtApp\app.js" />
     <Content Include="ExtApp\app\Application.js" />
+    <Content Include="ExtApp\app\model\base\system\CurrenciesModelBase.js" />
+    <Content Include="ExtApp\app\model\system\JavaScript.js" />
     <Content Include="ExtApp\app\view\sales\customer\CustomerController.js" />
     <Content Include="ExtApp\app\model\Base.js" />
     <Content Include="ExtApp\app\model\Customer.js" />
@@ -5809,8 +5811,12 @@
     <Content Include="RevApp\app.js" />
     <Content Include="RevApp\app\Application.js" />
     <Content Include="RevApp\app\model\Base.js" />
+    <Content Include="RevApp\app\model\base\system\CurrenciesModelBase.js" />
     <Content Include="RevApp\app\model\Personnel.js" />
+    <Content Include="RevApp\app\model\system\Currencies.js" />
     <Content Include="RevApp\app\store\Personnel.js" />
+    <Content Include="RevApp\app\store\system\Currencies.js" />
+    <Content Include="RevApp\app\view\util\Defaults.js" />
     <Content Include="RevApp\app\view\home\Home.js" />
     <Content Include="RevApp\app\view\home\HomeController.js" />
     <Content Include="RevApp\app\view\home\HomeModel.js" />

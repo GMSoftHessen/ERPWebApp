@@ -15,7 +15,7 @@ namespace WebApp.Controllers
             _ICustomerViewModel = customerViewModel;
         }
 
-        [Route("AllCustomers")]
+        [Route("Customers")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
@@ -30,7 +30,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [Route(" Customer/{ customerId}")]
+        [Route(" Customers/{ customerId}")]
         [HttpGet]
         public IHttpActionResult GetCustomer(int customerId)
         {
@@ -94,7 +94,7 @@ namespace WebApp.Controllers
             return BadRequest();
         }
 
-        [Route(" Customer/{id}")]
+        [Route(" Customers/{id}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
