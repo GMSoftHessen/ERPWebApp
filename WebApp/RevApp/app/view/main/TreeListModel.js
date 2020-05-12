@@ -3,7 +3,21 @@
 
     alias: 'viewmodel.tree-list',
 
+    data: {
+        englisch: {
+            title : 'englich'
+        },
+         deutsch: {
+             title: 'deutsch'
+        }
+    },
+
     formulas: {
+
+        languege: function (name) {
+
+            return 'englisch.title';
+        },
         selectionText: function (get) {
             var selection = get('treelist.selection'),
                 path;
@@ -30,6 +44,12 @@
     },
 
     stores: {
+        englisch: {
+            title: 'englich'
+        },
+        deutsch: {
+            title: 'deutsch'
+        },
         navItems: {
             type: 'tree',
             root: {
@@ -40,12 +60,13 @@
                     children: [{
                         text: 'Lokalisation',
                         iconCls: 'x-fa fa-inbox',
-                        xtype: 'sys-localisation',
+                         viewType: 'home', 
+                         routeId: 'home',
                         leaf: true
                     }, {
                         text: 'Währungen',
                         iconCls: 'x-fa fa-database',
-                        xtype: 'sys-currency',
+                        viewType: 'sys-currency',                         
                         leaf: true                      
                     
                     }]

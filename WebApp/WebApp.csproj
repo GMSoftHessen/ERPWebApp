@@ -5816,6 +5816,13 @@
     <Content Include="RevApp\app\model\system\Currencies.js" />
     <Content Include="RevApp\app\store\Personnel.js" />
     <Content Include="RevApp\app\store\system\Currencies.js" />
+    <Content Include="RevApp\app\Language.js" />
+    <Content Include="RevApp\app\view\Base\Config.js" />
+    <Content Include="RevApp\app\view\auth\CapsLockTooltip.js" />
+    <Content Include="RevApp\app\view\auth\Login.js" />
+    <Content Include="RevApp\app\view\auth\LoginController.js" />
+    <Content Include="RevApp\app\view\locale\Translation.js" />
+    <Content Include="RevApp\app\view\locale\TranslationController.js" />
     <Content Include="RevApp\app\view\util\Defaults.js" />
     <Content Include="RevApp\app\view\home\Home.js" />
     <Content Include="RevApp\app\view\home\HomeController.js" />

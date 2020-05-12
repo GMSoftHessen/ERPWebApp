@@ -1,27 +1,26 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "mainView" property. That setting automatically applies the "viewport"
- * plugin causing this view to become the body element (i.e., the viewport).
- *
- * TODO - Replace this content of this view to suite the needs of your application.
- */
+
 Ext.define('App.view.main.Main', {
-    extend: 'Ext.panel.Panel',
+    extend: 'App.view.base.Config',
     xtype: 'app-main',
     requires: [
         'Ext.layout.container.Border'
+        
     ],
-
+ 
+    controller: 'MainControler',
     viewModel: {
         type: 'tree-list'
+    },
+    listeners: {
+        render: 'onMainViewRender'
     },
     layout: 'border',
     width: 500,
     height: 400,
     cls: Ext.baseCSSPrefix + 'shadow',
-
+    
     bodyBorder: false,
-     
+    translation: App.Language,
     defaults: {
         collapsible: true,
         split: true,
@@ -40,12 +39,21 @@ Ext.define('App.view.main.Main', {
             xtype: 'main-tabs'
         },
         {
-            id:'Center',
-            title: 'Main Content',
+            itemId: 'Center',
+            id: 'Center',
+            bind: {
+                title: '{languege}'
+            },
             collapsible: false,
             region: 'center',
             margin: '5 0 0 0',
-            xtype: 'sys-currency'
+            reference: 'mainCardPanel',
+            layout: {
+                type: 'card'
+            },
+            items: [{        
+            }]
+           
         }
     ]
     

@@ -4,7 +4,8 @@ Ext.define('App.view.home.Home',{
     xtype : 'home',
     requires: [
         'App.view.home.HomeController',
-        'App.view.home.HomeModel'
+        'App.view.home.HomeModel',
+        'App.view.base.Config'
     ],
 
     controller: 'home-home',
@@ -12,5 +13,10 @@ Ext.define('App.view.home.Home',{
         type: 'home-home'
     },
 
-    html: 'Hello, World!!'
+    //bind: {
+    //    html: _() + 'Hello, World!!'
+    //},
+    
+    html: App.global._
+    
 });

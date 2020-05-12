@@ -21,27 +21,21 @@
         //  cls: 'card',
         iconCls: 'x-fa fa-info-circle',
         items: [{
-
+            id: 'treelistId',
             xtype: 'treelist',
             reference: 'treelist',
             ui: 'nav',
             scrollable: 'y',
             expanderFirst: false,
-            lookupReference: 'treelist-with-nav',
-            bind: '{navItems}'
-        }],
-        listeners: {
-            click: {
-                element: 'el', //bind to the underlying el property on the panel
-                fn: function () {
-                    mainCard = Ext.getCmp('Center');
-                    mainLayout = mainCard.getLayout();
-
-                    Ext.getCmp('Center').setActiveItem(Ext.create({ xtype: 'sys-currency' }));  
-                    console.log('click el');
-                }
+          //  lookupReference: 'treelist-with-nav',
+            bind: '{navItems}',
+            listeners: {
+                selectionchange: 'onNavigationTreeSelectionChange'
             }
-        }
+           
+        }]
+         
+        
 
     }, {
         title: 'Favorites',

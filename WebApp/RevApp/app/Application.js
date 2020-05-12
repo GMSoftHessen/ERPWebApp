@@ -1,8 +1,16 @@
-/**
- * The main application class. An instance of this class is created by app.js when it
- * calls Ext.application(). This is the ideal place to handle application launch and
- * initialization details.
- */
+Ext.define('App.global', {
+    singleton: true,
+    user_guid: null,
+    is_admin: false,
+    something: 'else'
+    _: function () {
+        //var store = Ext.getStore('locales')
+        //    , rec = store.findRecord('textId', textId)
+        //    ;
+        return 'eeeeee';//rec ? rec.get(MyApp.currentLocale) : text;
+    }
+    
+});
 Ext.define('App.Application', {
     extend: 'Ext.app.Application',
 

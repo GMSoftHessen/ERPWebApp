@@ -8,6 +8,7 @@ Ext.define('App.view.system.currency.CurrencyView', {
         'Ext.layout.container.Column',        
         'App.view.system.currency.CurrencyViewController',
         'App.view.system.currency.CurrencyViewModel'
+        
     ],
 
     controller: 'system-currency-currencyview',
@@ -15,6 +16,18 @@ Ext.define('App.view.system.currency.CurrencyView', {
         type: 'system-currency-currencyview'
     },
 
-    
-         html: 'Währungen'
+    layout: 'vbox',
+    items: [
+        {
+            //translation :App.Language,
+            //bind: {
+            //    html: '{englisch.title}'
+            //},
+            html: '_()' //App.Language.test100[App.Language.currentLocale]
+        }
+        , {
+            html: App.Language.test100[App.Language.currentLocale]
+        }
+
+    ]
 });
