@@ -56,7 +56,7 @@ Ext.define('App.view.login.Login', {
                     maxLength: 15,
                     value: 'Packt123@',
                     vtype: 'customPass',
-                    //msgTarget: 'side',
+                    msgTarget: 'side',
                     listeners: {
                         keypress: 'onTextFieldKeyPress'
                     }
@@ -76,7 +76,7 @@ Ext.define('App.view.login.Login', {
                         {
                             xtype: 'button',
                             iconCls: 'fa fa-times fa-lg',
-                            text: translations.cancel,
+                          text: translations.cancel,
                             listeners: {
                                 click: 'onButtonClickCancel'
                             }

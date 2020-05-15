@@ -17,6 +17,6 @@ Ext.define('App.view.home.Home',{
     //    html: _() + 'Hello, World!!'
     //},
     
-    html: App.global._
+   // html: App.global._
     
 });

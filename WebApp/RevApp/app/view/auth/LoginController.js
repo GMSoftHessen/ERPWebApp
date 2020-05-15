@@ -3,9 +3,10 @@ Ext.define('App.view.login.LoginController', {
     alias: 'controller.login',
 
     requires: [
-        'Packt.view.login.CapsLockTooltip',
-        'Packt.util.Util',
-        'Packt.util.SessionMonitor'
+        'App.view.login.CapsLockTooltip'
+        /*,
+        'App.util.Util',
+        'App.util.SessionMonitor'*/
     ],
 
     onTextFieldSpecialKey: function(field, e, options){
@@ -89,7 +90,7 @@ Ext.define('App.view.login.LoginController', {
         var view = this.getView();
         view.unmask();
         view.close();
-        Ext.create('Packt.view.main.Main');
+        Ext.create('App.view.main.Main');
         Packt.util.SessionMonitor.start();
     }
 });

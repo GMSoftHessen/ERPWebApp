@@ -1,0 +1,68 @@
+// These variables are always included so that they can be used by theme-neutral without
+// requiring either the font-awesome or font-ext package.  This allows sub-themes to
+// simply require these two packages to enable font icon support.
+@import 'font-awesome-variables';
+@import 'font-ext-variables';
+@import 'font-pictos-variables';
+@import 'font-ios-variables';
+@import 'extensions.js';
+
+$output-paths: null !default;
+
+@function get-resource-path($path, $pool: "path", $packageName: null) {
+    $prefix: $current-resource-root;
+
+    @if ($output-paths != null) {
+        @if ($pool != null) {
+            $val: map-get($output-paths, $pool);
+            // if a named path was found, use it, else keep the
+            // current-resource-root default
+            @if ($val != null) {
+                $prefix: file_join($val, $prefix);
+            }
+        }
+    }
+
+    @if ($packageName != null) {
+        $prefix: file_join($prefix, $packageName);
+    }
+
+    $leaf: file_join($prefix, $path);
+    $ret: none;
+
+    @if $path {
+        $ret: $leaf;
+    } @else {
+        @warn "@get-resource-path: No arguments passed";
+    }
+
+    @return $ret;
+}
+
+.x-mask.splashscreen {
+    background-color : white;
+    opacity:1;
+}
+.x-mask-msg.splashscreen,
+.x-mask-msg.splashscreen div {
+
+    font-size: 16px;
+    font-weight:bold;
+    padding:30px 5px 5px 5px;
+    border: none;
+    background: {
+        color: transparent;
+        position: top center;
+    };
+
+}
+.x-message-box .x-window-body .x-box-inner {
+    min-height : 110px !important;
+}
+.x-splash-icon {
+    background-image:url('images/app/packt-logo.png') !important;
+    margin-top: -30px;
+    height: 70px;
+    
+}
+

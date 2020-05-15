@@ -51,12 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Sales\Sales.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Sales.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Admin\Admin.cs">
+      <DependentUpon>Admin.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Sys\System.cs">
       <DependentUpon>System.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -81,6 +87,10 @@
     <Content Include="Sales\Sales.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Sales.cs</LastGenOutput>
+    </Content>
+    <Content Include="Admin\Admin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Admin.cs</LastGenOutput>
     </Content>
     <Content Include="Sys\System.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
