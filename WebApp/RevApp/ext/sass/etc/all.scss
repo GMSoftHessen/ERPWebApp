@@ -8,7 +8,7 @@
 @import 'extensions.js';
 
 $output-paths: null !default;
-
+$color-soft-green: dynamic(#9cc96b);
 @function get-resource-path($path, $pool: "path", $packageName: null) {
     $prefix: $current-resource-root;
 

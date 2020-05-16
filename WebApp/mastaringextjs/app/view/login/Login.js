@@ -42,12 +42,17 @@
                 },
                 {
                     inputType: 'password',
+                    id: 'password',
                     name: 'Password',
-                    fieldLabel: 'Password',   
+                    fieldLabel: 'Password',
+                    enableKeyEvents: true,
                     maxLength: 15,
                     minLength: 8,
                     allowBlank: false,
-                    msgTarget: 'under'
+                    msgTarget: 'under',
+                    listeners: {
+                        specialKey: 'onTextFieldSpecialKey'
+                    }
                 }, {
                     xtype: 'checkbox',
                     fieldLabel: 'Remember me',

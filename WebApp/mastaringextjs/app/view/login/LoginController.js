@@ -3,6 +3,7 @@
     alias: 'controller.login',
 
     requires: [
+        'Packt.view.login.CapsLockTooltip',
         'Packt.util.Util'
     ],
 
@@ -20,6 +21,7 @@
         }
     },
     doLogin: function () {
+        this.getView().mask('Authenticating... Please wait...');
         var me = this,
             form = me.lookupReference('form');
 
@@ -32,7 +34,7 @@
         });
     },
     onLoginFailure: function (form, action) {
-
+        this.getView().unmask();
         var result =
             Packt.util.Util.decodeJSON(action.response.responseText);
         switch (action.failureType) {
@@ -45,14 +47,31 @@
             case Ext.form.action.Action.SERVER_INVALID:
                 Packt.util.Util.showErrorMsg(result.msg);
         }
-
-
     },
+    onTextFieldSpecialKey: function (field, e, options) {
 
+        if (e.getKey() === e.ENTER) {
+            this.doLogin();
+        }
 
-
+        var charCode = e.getCharCode(),
+            me = this;
+        if ((e.shiftKey && charCode >= 97 && charCode <= 122) || //#2
+            (!e.shiftKey && charCode >= 65 && charCode <= 90)) {
+            if (me.capslockTooltip === undefined) { //#3
+                me.capslockTooltip = Ext.widget('capslocktooltip'); //#4
+            }
+            me.capslockTooltip.show(); //#5
+        } else {
+            if (me.capslockTooltip !== undefined) { //#6
+                me.capslockTooltip.hide(); //#7
+            }
+        }
+    },
+    
 
     onLoginSuccess: function (form, action) {
+        this.getView().unmask();
         this.getView().close();
         Ext.create('Packt.view.main.Main');
     }

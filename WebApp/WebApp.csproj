@@ -5818,6 +5818,7 @@
     <Content Include="mastaringextjs\app\model\Personnel.js" />
     <Content Include="mastaringextjs\app\store\Personnel.js" />
     <Content Include="mastaringextjs\app\util\Util.js" />
+    <Content Include="mastaringextjs\app\view\login\CapsLockTooltip.js" />
     <Content Include="mastaringextjs\app\view\login\Login.js" />
     <Content Include="mastaringextjs\app\view\login\LoginController.js" />
     <Content Include="mastaringextjs\app\view\main\List.js" />
@@ -10572,12 +10573,15 @@
     <Content Include="RevApp\app\store\Personnel.js" />
     <Content Include="RevApp\app\store\system\Currencies.js" />
     <Content Include="RevApp\app\Language.js" />
+    <Content Include="RevApp\app\view\authentication\AuthenticationController.js" />
+    <Content Include="RevApp\app\view\authentication\AuthenticationModel.js" />
+    <Content Include="RevApp\app\view\authentication\Dialog.js" />
+    <Content Include="RevApp\app\view\authentication\LockingWindow.js" />
+    <Content Include="RevApp\app\view\authentication\LockScreen.js" />
+    <Content Include="RevApp\app\view\authentication\Login.js" />
+    <Content Include="RevApp\app\view\authentication\PasswordReset.js" />
+    <Content Include="RevApp\app\view\authentication\Register.js" />
     <Content Include="RevApp\app\view\Base\Config.js" />
-    <Content Include="RevApp\app\view\auth\CapsLockTooltip.js" />
-    <Content Include="RevApp\app\view\auth\Login.js" />
-    <Content Include="RevApp\app\view\auth\LoginController.js" />
-    <Content Include="RevApp\app\view\locale\Translation.js" />
-    <Content Include="RevApp\app\view\locale\TranslationController.js" />
     <Content Include="RevApp\app\view\util\Defaults.js" />
     <Content Include="RevApp\app\view\home\Home.js" />
     <Content Include="RevApp\app\view\home\HomeController.js" />
@@ -15328,6 +15332,7 @@
     <Content Include="RevApp\ext\sass\etc\extensions.js" />
     <Content Include="RevApp\ext\sass\example\fashion.html" />
     <Content Include="RevApp\index.html" />
+    <Content Include="RevApp\resources\images\lock-screen-background.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -19901,6 +19906,8 @@
     <Content Include="RevApp\Readme.md" />
     <Content Include="RevApp\resources\Readme.md" />
     <Content Include="RevApp\workspace.json" />
+    <Content Include="RevApp\app\view\authentication\Dialog.scss" />
+    <Content Include="RevApp\app\view\authentication\LockingWindow.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

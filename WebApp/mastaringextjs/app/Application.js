@@ -9,7 +9,7 @@ Ext.define('Packt.Application', {
     name: 'Packt',
 
     views: [
-        'login.Login'
+        'authentication.Login'
     ],
     controllers: [
         //'Root'
@@ -18,9 +18,9 @@ Ext.define('Packt.Application', {
     ],
     init: function () {
         var me = this;
-        //me.splashscreen = Ext.getBody().mask(
-        //    'Loading appliaction', 'splashscreen'
-        //);
+        me.splashscreen = Ext.getBody().mask(
+            'Loading appliaction', 'splashscreen'
+        );
 
         //me.splashscreen.next().fadeOut({
         //    duration: 1000,
@@ -34,10 +34,10 @@ Ext.define('Packt.Application', {
 
         Ext.widget('login-dialog'); 
     },
-    //,
-    //launch: function () {
-
-    //}
+    
+    launch: function () {
+        Ext.tip.QuickTipManager.init();
+    },
   
     quickTips: false,
     platformConfig: {

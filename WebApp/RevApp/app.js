@@ -12,5 +12,5 @@ Ext.application({
     ],
    
     // The name of the initial view to create.
-    mainView: 'App.view.login.Login' //'App.view.main.Main'
+  //  mainView: 'App.view.login.Login' //'App.view.main.Main'
 });
