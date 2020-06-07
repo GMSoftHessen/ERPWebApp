@@ -12,18 +12,12 @@ using ReusableGenericRepository;
 namespace BusinessLayer.Base
 {
     public  class CurrenciesBaseRepository
-    {
-        internal DbContext _context;
-        internal DbSet<Currencies> _dbSet;
+    {   
         
-        internal DbContext _context { get; set; }
-        internal DbSetCurrencies _dbSet { get { return _context.Set<Currencies>();  } }
+       internal DbContext _context { get; set; }
+       internal DbSet<Currencies> _dbSet  { get { return _context.Set<Currencies>();  } }
 
-        public CurrenciesBaseRepository(DbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<Currencies>();
-        }
+        
 
         public IEnumerable<Currencies> All()
         {

@@ -48,31 +48,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\B_Admin\User\UserBaseBO.cs" />
-    <Compile Include="Base\B_Admin\User\UserBaseRepository.cs" />
-    <Compile Include="Base\B_Admin\User\UserBaseViewModel.cs" />
-    <Compile Include="Base\B_Sales\Customer\CustomerBaseBO.cs" />
-    <Compile Include="Base\B_Sales\Customer\CustomerBaseRepository.cs" />
-    <Compile Include="Base\B_Sales\Customer\CustomerBaseViewModel.cs" />
-    <Compile Include="Base\Config\MainConfig.cs" />
-    <Compile Include="Base\partial\CustomizeCTOR\CustomerBO.cs" />
-    <Compile Include="Base\partial\CustomizeCTOR\CustomerRepository.cs" />
-    <Compile Include="Base\partial\CustomizeCTOR\CustomerViewModel.partial.cs" />
+    <Compile Include="Base\Admin\Group\GroupBaseBO.cs" />
+    <Compile Include="Base\Admin\Group\GroupBaseRepository.cs" />
+    <Compile Include="Base\Admin\Group\GroupBaseViewModel.cs" />
+    <Compile Include="Base\Admin\Menu\MenuBaseBO.cs" />
+    <Compile Include="Base\Admin\Menu\MenuBaseRepository.cs" />
+    <Compile Include="Base\Admin\Menu\MenuBaseViewModel.cs" />
+    <Compile Include="Base\Admin\permissions\permissionsBaseBO.cs" />
+    <Compile Include="Base\Admin\permissions\permissionsBaseRepository.cs" />
+    <Compile Include="Base\Admin\permissions\permissionsBaseViewModel.cs" />
+    <Compile Include="Base\Admin\User\UserBaseBO.cs" />
+    <Compile Include="Base\Admin\User\UserBaseRepository.cs" />
+    <Compile Include="Base\Admin\User\UserBaseViewModel.cs" />
+    <Compile Include="Base\Sales\Customer\CustomerBaseBO.cs" />
+    <Compile Include="Base\Sales\Customer\CustomerBaseRepository.cs" />
+    <Compile Include="Base\Sales\Customer\CustomerBaseViewModel.cs" />
+    <Compile Include="Base\Sales\Employee\EmployeeBaseBO.cs" />
+    <Compile Include="Base\Sales\Employee\EmployeeBaseRepository.cs" />
+    <Compile Include="Base\Sales\Employee\EmployeeBaseViewModel.cs" />
+    <Compile Include="Base\Sales\Product\ProductBaseBO.cs" />
+    <Compile Include="Base\Sales\Product\ProductBaseRepository.cs" />
+    <Compile Include="Base\Sales\Product\ProductBaseViewModel.cs" />
+    <Compile Include="Base\System\Currencies\CurrenciesBaseBO.cs" />
+    <Compile Include="Base\System\Currencies\CurrenciesBaseRepository.cs" />
+    <Compile Include="Base\System\Currencies\CurrenciesBaseViewModel.cs" />
+    <Compile Include="Customized\Admin\Group\GroupBO.cs" />
+    <Compile Include="Customized\Admin\Group\GroupRepositoryTemplate.cs" />
+    <Compile Include="Customized\Admin\Group\GroupViewModel.cs" />
+    <Compile Include="Customized\Admin\Menu\MenuBO.cs" />
+    <Compile Include="Customized\Admin\Menu\MenuRepositoryTemplate.cs" />
+    <Compile Include="Customized\Admin\Menu\MenuViewModel.cs" />
+    <Compile Include="Customized\Admin\permissions\permissionsBO.cs" />
+    <Compile Include="Customized\Admin\permissions\permissionsRepositoryTemplate.cs" />
+    <Compile Include="Customized\Admin\permissions\permissionsViewModel.cs" />
+    <Compile Include="Customized\Admin\User\UserBO.cs" />
+    <Compile Include="Customized\Admin\User\UserRepositoryTemplate.cs" />
+    <Compile Include="Customized\Admin\User\UserViewModel.cs" />
+    <Compile Include="Customized\Sales\Customer\CustomerBO.cs" />
+    <Compile Include="Customized\Sales\Customer\CustomerRepositoryTemplate.cs" />
+    <Compile Include="Customized\Sales\Customer\CustomerViewModel.cs" />
+    <Compile Include="Customized\Sales\Employee\EmployeeBO.cs" />
+    <Compile Include="Customized\Sales\Employee\EmployeeRepositoryTemplate.cs" />
+    <Compile Include="Customized\Sales\Employee\EmployeeViewModel.cs" />
+    <Compile Include="Customized\Sales\Product\ProductBO.cs" />
+    <Compile Include="Customized\Sales\Product\ProductRepositoryTemplate.cs" />
+    <Compile Include="Customized\Sales\Product\ProductViewModel.cs" />
+    <Compile Include="Customized\System\Currencies\CurrenciesBO.cs" />
+    <Compile Include="Customized\System\Currencies\CurrenciesRepositoryTemplate.cs" />
+    <Compile Include="Customized\System\Currencies\CurrenciesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{683e750d-f566-4e3b-856a-4f4483a6ca5d}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{b6d6f3f3-76fa-475d-910e-cf360183d057}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Base\Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

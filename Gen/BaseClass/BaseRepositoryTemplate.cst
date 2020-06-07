@@ -23,18 +23,12 @@ using ReusableGenericRepository;
 namespace BusinessLayer.Base
 {
     public  class <%= tableName %>BaseRepository
-    {
-        internal DbContext _context;
-        internal DbSet<<%= tableName %>> _dbSet;
+    {   
         
-        internal DbContext _context { get; set; }
-        internal DbSet<%= tableName %> _dbSet { get { return _context.Set<<%= tableName %>>();  } }
+       internal DbContext _context { get; set; }
+       internal DbSet<<%= tableName %>> _dbSet  { get { return _context.Set<<%= tableName %>>();  } }
 
-        public <%= tableName %>BaseRepository(DbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<<%= tableName %>>();
-        }
+        
 
         public IEnumerable<<%= tableName %>> All()
         {

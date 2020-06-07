@@ -12,18 +12,12 @@ using ReusableGenericRepository;
 namespace BusinessLayer.Base
 {
     public  class MenuBaseRepository
-    {
-        internal DbContext _context;
-        internal DbSet<Menu> _dbSet;
+    {   
         
-        internal DbContext _context { get; set; }
-        internal DbSetMenu _dbSet { get { return _context.Set<Menu>();  } }
+       internal DbContext _context { get; set; }
+       internal DbSet<Menu> _dbSet  { get { return _context.Set<Menu>();  } }
 
-        public MenuBaseRepository(DbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<Menu>();
-        }
+        
 
         public IEnumerable<Menu> All()
         {

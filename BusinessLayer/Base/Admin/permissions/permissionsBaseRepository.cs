@@ -12,18 +12,12 @@ using ReusableGenericRepository;
 namespace BusinessLayer.Base
 {
     public  class PermissionsBaseRepository
-    {
-        internal DbContext _context;
-        internal DbSet<Permissions> _dbSet;
+    {   
         
-        internal DbContext _context { get; set; }
-        internal DbSetPermissions _dbSet { get { return _context.Set<Permissions>();  } }
+       internal DbContext _context { get; set; }
+       internal DbSet<Permissions> _dbSet  { get { return _context.Set<Permissions>();  } }
 
-        public PermissionsBaseRepository(DbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<Permissions>();
-        }
+        
 
         public IEnumerable<Permissions> All()
         {

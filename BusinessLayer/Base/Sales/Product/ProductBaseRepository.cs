@@ -12,18 +12,12 @@ using ReusableGenericRepository;
 namespace BusinessLayer.Base
 {
     public  class ProductBaseRepository
-    {
-        internal DbContext _context;
-        internal DbSet<Product> _dbSet;
+    {   
         
-        internal DbContext _context { get; set; }
-        internal DbSetProduct _dbSet { get { return _context.Set<Product>();  } }
+       internal DbContext _context { get; set; }
+       internal DbSet<Product> _dbSet  { get { return _context.Set<Product>();  } }
 
-        public ProductBaseRepository(DbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<Product>();
-        }
+        
 
         public IEnumerable<Product> All()
         {
