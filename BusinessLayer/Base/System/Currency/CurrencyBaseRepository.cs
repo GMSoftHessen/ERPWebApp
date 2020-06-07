@@ -6,67 +6,67 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using DataAccessLayer.Admin;
+using DataAccessLayer.System;
 using ReusableGenericRepository;
 
 namespace BusinessLayer.Base
 {
-    public  class GroupBaseRepository
+    public  class CurrencyBaseRepository
     {   
         
        internal DbContext _context { get; set; }
-       internal DbSet<Group> _dbSet  { get { return _context.Set<Group>();  } }
+       internal DbSet<Currency> _dbSet  { get { return _context.Set<Currency>();  } }
 
         
 
-        public IEnumerable<Group> All()
+        public IEnumerable<Currency> All()
         {
             return _dbSet.AsNoTracking().ToList();
         }
 
-        public IEnumerable<Group> AllInclude
-        (params Expression<Func<Group, object>>[] includeProperties)
+        public IEnumerable<Currency> AllInclude
+        (params Expression<Func<Currency, object>>[] includeProperties)
         {
             return GetAllIncluding(includeProperties).ToList();
         }
 
-        public IEnumerable<Group> FindByInclude
-          (Expression<Func<Group, bool>> predicate,
-          params Expression<Func<Group, object>>[] includeProperties)
+        public IEnumerable<Currency> FindByInclude
+          (Expression<Func<Currency, bool>> predicate,
+          params Expression<Func<Currency, object>>[] includeProperties)
         {
             var query = GetAllIncluding(includeProperties);
-            IEnumerable<Group> results = query.Where(predicate).ToList();
+            IEnumerable<Currency> results = query.Where(predicate).ToList();
             return results;
         }
 
-        private IQueryable<Group> GetAllIncluding
-        (params Expression<Func<Group, object>>[] includeProperties)
+        private IQueryable<Currency> GetAllIncluding
+        (params Expression<Func<Currency, object>>[] includeProperties)
         {
-            IQueryable<Group> queryable = _dbSet.AsNoTracking();
+            IQueryable<Currency> queryable = _dbSet.AsNoTracking();
 
             return includeProperties.Aggregate
               (queryable, (current, includeProperty) => current.Include(includeProperty));
         }
-        public IEnumerable<Group> FindBy(Expression<Func<Group, bool>> predicate)
+        public IEnumerable<Currency> FindBy(Expression<Func<Currency, bool>> predicate)
         {
 
-            IEnumerable<Group> results = _dbSet.AsNoTracking()
+            IEnumerable<Currency> results = _dbSet.AsNoTracking()
               .Where(predicate).ToList();
             return results;
         }
 
-        public Group FindByKey(int id)
+        public Currency FindByKey(int id)
         {
-            Expression<Func<Group, bool>> lambda = Utilities.BuildLambdaForFindByKey<Group>(id);
+            Expression<Func<Currency, bool>> lambda = Utilities.BuildLambdaForFindByKey<Currency>(id);
             return _dbSet.AsNoTracking().SingleOrDefault(lambda);
         }
 
-        public void Insert(Group entity)
+        public void Insert(Currency entity)
         {
             _dbSet.Add(entity);
         }
 
-        public void Update(Group entity)
+        public void Update(Currency entity)
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;

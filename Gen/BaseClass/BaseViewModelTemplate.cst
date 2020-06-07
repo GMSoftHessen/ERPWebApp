@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Base
 {
-    public  class <%= tableName %>BaseViewModel
+    public  class <%= tableName %>BaseViewModel:I<%= tableName %>ViewModel
     {
         #region private members
         private <%= tableName %>BaseBO _<%= tableName %>BaseBO;

@@ -3,9 +3,9 @@ using BusinessLayer.Base;
 
 namespace BusinessLayer.Customize
 {
-    public class CurrenciesRepository : CurrenciesBaseRepository
+    public class CurrencyRepository : CurrencyBaseRepository
     {
-        public CurrenciesRepository()
+        public CurrencyRepository()
         {
         }      
     }

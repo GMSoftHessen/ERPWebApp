@@ -8,7 +8,7 @@ namespace BusinessLayer.Customize
         EmployeeBO _EmployeecustomerBO;
         public EmployeeViewModel(EmployeeBO EmployeeBO) 
         {
-            _ Employee BO = EmployeeBO;
+            _EmployeeBO = EmployeeBO;
         }
     }
 }

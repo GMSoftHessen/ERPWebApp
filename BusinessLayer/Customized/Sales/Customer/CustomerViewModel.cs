@@ -8,7 +8,7 @@ namespace BusinessLayer.Customize
         CustomerBO _CustomercustomerBO;
         public CustomerViewModel(CustomerBO CustomerBO) 
         {
-            _ Customer BO = CustomerBO;
+            _CustomerBO = CustomerBO;
         }
     }
 }

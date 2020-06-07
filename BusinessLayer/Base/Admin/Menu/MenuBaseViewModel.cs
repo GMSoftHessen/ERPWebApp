@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Base
 {
-    public  class MenuBaseViewModel
+    public  class MenuBaseViewModel:IMenuViewModel
     {
         #region private members
         private MenuBaseBO _MenuBaseBO;

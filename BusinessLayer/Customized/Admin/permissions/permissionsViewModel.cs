@@ -8,7 +8,7 @@ namespace BusinessLayer.Customize
         PermissionsBO _PermissionscustomerBO;
         public PermissionsViewModel(PermissionsBO PermissionsBO) 
         {
-            _ Permissions BO = PermissionsBO;
+            _PermissionsBO = PermissionsBO;
         }
     }
 }

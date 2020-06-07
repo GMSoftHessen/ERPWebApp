@@ -3,14 +3,20 @@
 <%@ CodeTemplate OutputType="None" Language="C#" TargetLanguage="Text" Debug="True" Description="Demonstrates the use of a sub-template." %>
 <%@ Property Name="SourceDatabase" Type="SchemaExplorer.DatabaseSchema" Category="DataSource" Optional="False" %>
 <%@ Property Name="Namespace" Type="System.String" Optional="False"  Category="" Default="Persistance.Sales.Repository" Optional="False" %>
-<%@ Property Name="BaseFolder" Type="System.String" Optional="False"  Category=""  Default="Base" Optional="False" %>
-<%@ Property Name="CustomizedFolder" Type="System.String" Optional="False"  Category=""  Default="Customized" Optional="False" %>
+
+<%@ Property Name="BaseFolder" Type="System.String" Optional="False"  Category=""  Default="D:\ERPWebApp\BusinessLayer\Base\test" Optional="False" %>
+<%@ Property Name="CustomizedFolder" Type="System.String" Optional="False"  Category=""  Default="D:\ERPWebApp\BusinessLayer\Customized\test" Optional="False" %>
+
+<%@ Property Name="BaseControllerFolder" Type="System.String" Optional="False"  Category=""  Default="D:\ERPWebApp\WebApp\Base\test" Optional="False" %>
+<%@ Property Name="ControllerFolder" Type="System.String" Optional="False"  Category=""  Default="D:\ERPWebApp\WebApp\Customized\test" Optional="False" %>
+
 <%@ Assembly Name="SchemaExplorer" %>
 <%@ Import NameSpace="System.IO" %>
 
 <%@ Register Name="BaseRepositoryTemplate" Template="BaseRepositoryTemplate.cst" %>
 <%@ Register Name="BaseBOTemplate" Template="BaseBOTemplate.cst" %>
 <%@ Register Name="BaseViewModelTemplate" Template="BaseViewModelTemplate.cst" %>
+<%@ Register Name="IBaseViewModel" Template="IBaseViewModel.cst" %>
 
 <%@ Register Name="BOTemplate" Template="BOTemplate.cst" %>
 <%@ Register Name="RepositoryTemplate" Template="RepositoryTemplate.cst" %>
@@ -23,7 +29,11 @@
 
 
 <script runat="template">
-
+public bool AllowCreate(string folderName)
+{
+    
+    return !Directory.Exists(folderName);
+}
 public override void Render(TextWriter writer)
 {
     if(!Directory.Exists(BaseFolder))
@@ -39,16 +49,19 @@ public override void Render(TextWriter writer)
         CreateBaseRepository(table,tableNameShema);     
         CreateBaseBO(table,tableNameShema);
         CreateBaseViewModel(table,tableNameShema);
+        CreateIBaseViewModel(table, tableNameShema); 
         
         CreateRepository(table, tableNameShema);
         CreateBO(table, tableNameShema);
-        CreateViewModel(table, tableNameShema);        
+        CreateViewModel(table, tableNameShema);  
+      
         
        // CreateBaseController(table);
        // CreateController(table);
         
     }    
 }
+#region Base
 public void CreateBaseRepository(TableSchema table, string tableNameShema)
 {
     string filePath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"BaseRepository.cs" ;
@@ -102,7 +115,9 @@ public void CreateBaseViewModel(TableSchema table, string tableNameShema)
     }
   
 }
+#endregion Base
 
+#region Customized
 public void CreateRepository(TableSchema table, string tableNameShema)
 {
     string filePath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"Repository.cs" ;
@@ -158,11 +173,69 @@ public void CreateViewModel(TableSchema table, string tableNameShema)
     }
   
 }
+#endregion Customized
 
-public bool AllowCreate(string folderName)
-{
+public void CreateIBaseViewModel(TableSchema table, string tableNameShema)
+     {
+        string filePath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"IBaseViewModel.cs" ;
+        string folderPath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
     
-    return !Directory.Exists(folderName);
-}
+        if(AllowCreate(filePath))
+         {   
+    
+           Directory.CreateDirectory(folderPath);    
+        
+           IBaseViewModel iBaseViewModel = this.Create<IBaseViewModel>();
+           iBaseViewModel.SourceTable = table;
+           string fileName = String.Format("{0}/{1}IBaseViewModel.cs", folderPath, table.Name);
+           OutputFile  outputFile = new OutputFile(fileName);
+           iBaseViewModel.RenderToFile(outputFile, true);
+         }
+      }
+
+   
+
+#region Controller
+     public void CreateBaseController(TableSchema table, string tableNameShema)
+     {
+        string filePath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"Repository.cs" ;
+        string folderPath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    
+        if(AllowCreate(filePath))
+         {   
+    
+           Directory.CreateDirectory(folderPath);    
+        
+           RepositoryTemplate repositoryTemplate = this.Create<RepositoryTemplate>();
+           repositoryTemplate.SourceTable = table;
+           string fileName = String.Format("{0}/{1}RepositoryTemplate.cs", folderPath, table.Name);
+           OutputFile  outputFile = new OutputFile(fileName);
+           repositoryTemplate.RenderToFile(outputFile, true);
+         }
+      }
+
+     public void CreateController(TableSchema table, string tableNameShema)
+     {
+           string filePath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"BO.cs" ;
+           string folderPath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    
+           if(AllowCreate(filePath))
+           {   
+    
+             Directory.CreateDirectory(folderPath);    
+        
+             BOTemplate bOTemplate = this.Create<BOTemplate>();
+             bOTemplate.SourceTable = table;
+             string fileName = String.Format("{0}/{1}BO.cs", folderPath, table.Name);
+             OutputFile  outputFile = new OutputFile(fileName);
+            bOTemplate.RenderToFile(outputFile, true);
+          }
+  
+     }
+     
+     
+     
+#endregion Controller
+
 
 </script>

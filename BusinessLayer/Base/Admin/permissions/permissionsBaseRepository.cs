@@ -6,67 +6,67 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using DataAccessLayer.Sales;
+using DataAccessLayer.Admin;
 using ReusableGenericRepository;
 
 namespace BusinessLayer.Base
 {
-    public  class PermissionsBaseRepository
+    public  class permissionsBaseRepository
     {   
         
        internal DbContext _context { get; set; }
-       internal DbSet<Permissions> _dbSet  { get { return _context.Set<Permissions>();  } }
+       internal DbSet<permissions> _dbSet  { get { return _context.Set<permissions>();  } }
 
         
 
-        public IEnumerable<Permissions> All()
+        public IEnumerable<permissions> All()
         {
             return _dbSet.AsNoTracking().ToList();
         }
 
-        public IEnumerable<Permissions> AllInclude
-        (params Expression<Func<Permissions, object>>[] includeProperties)
+        public IEnumerable<permissions> AllInclude
+        (params Expression<Func<permissions, object>>[] includeProperties)
         {
             return GetAllIncluding(includeProperties).ToList();
         }
 
-        public IEnumerable<Permissions> FindByInclude
-          (Expression<Func<Permissions, bool>> predicate,
-          params Expression<Func<Permissions, object>>[] includeProperties)
+        public IEnumerable<permissions> FindByInclude
+          (Expression<Func<permissions, bool>> predicate,
+          params Expression<Func<permissions, object>>[] includeProperties)
         {
             var query = GetAllIncluding(includeProperties);
-            IEnumerable<Permissions> results = query.Where(predicate).ToList();
+            IEnumerable<permissions> results = query.Where(predicate).ToList();
             return results;
         }
 
-        private IQueryable<Permissions> GetAllIncluding
-        (params Expression<Func<Permissions, object>>[] includeProperties)
+        private IQueryable<permissions> GetAllIncluding
+        (params Expression<Func<permissions, object>>[] includeProperties)
         {
-            IQueryable<Permissions> queryable = _dbSet.AsNoTracking();
+            IQueryable<permissions> queryable = _dbSet.AsNoTracking();
 
             return includeProperties.Aggregate
               (queryable, (current, includeProperty) => current.Include(includeProperty));
         }
-        public IEnumerable<Permissions> FindBy(Expression<Func<Permissions, bool>> predicate)
+        public IEnumerable<permissions> FindBy(Expression<Func<permissions, bool>> predicate)
         {
 
-            IEnumerable<Permissions> results = _dbSet.AsNoTracking()
+            IEnumerable<permissions> results = _dbSet.AsNoTracking()
               .Where(predicate).ToList();
             return results;
         }
 
-        public Permissions FindByKey(int id)
+        public permissions FindByKey(int id)
         {
-            Expression<Func<Permissions, bool>> lambda = Utilities.BuildLambdaForFindByKey<Permissions>(id);
+            Expression<Func<permissions, bool>> lambda = Utilities.BuildLambdaForFindByKey<permissions>(id);
             return _dbSet.AsNoTracking().SingleOrDefault(lambda);
         }
 
-        public void Insert(Permissions entity)
+        public void Insert(permissions entity)
         {
             _dbSet.Add(entity);
         }
 
-        public void Update(Permissions entity)
+        public void Update(permissions entity)
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;

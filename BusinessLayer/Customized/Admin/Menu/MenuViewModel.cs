@@ -8,7 +8,7 @@ namespace BusinessLayer.Customize
         MenuBO _MenucustomerBO;
         public MenuViewModel(MenuBO MenuBO) 
         {
-            _ Menu BO = MenuBO;
+            _MenuBO = MenuBO;
         }
     }
 }

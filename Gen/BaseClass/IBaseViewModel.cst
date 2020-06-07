@@ -10,16 +10,18 @@
 <% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
 <% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
 
+using DataAccessLayer.<%=tableNameShema%>;
+using System.Collections.Generic;
 
-
-namespace BusinessLayer.Customize
+namespace BusinessLayer.Base
 {
-    public partial class <%= tableName %>ViewModel 
+    public partial interface I<%= tableName %>ViewModel
     {
-        <%= tableName %>BO _<%= tableName %>customerBO;
-        public <%= tableName %>ViewModel(<%= tableName %>BO <%= tableName %>BO) 
-        {
-            _<%= tableName %>BO = <%= tableName %>BO;
-        }
+        List<<%= tableName %>> GetAll();
+        <%= tableName %> Find(int id);
+        void Update(<%= tableName %> <%= tableName.ToCamelCase() %>);
+        int Insert(<%= tableName %> <%= tableName.ToCamelCase() %>);
+        void Delete(int id);
+     
     }
 }

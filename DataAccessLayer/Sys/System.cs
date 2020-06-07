@@ -37,7 +37,7 @@ namespace DataAccessLayer.Sys
 
     public interface ISystemDbContext : System.IDisposable
     {
-        System.Data.Entity.DbSet<SysCurrency> SysCurrencies { get; set; } // SysCurrencies
+        System.Data.Entity.DbSet<Currency> Currencies { get; set; } // Currency
 
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();
@@ -60,7 +60,7 @@ namespace DataAccessLayer.Sys
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
     public class SystemDbContext : System.Data.Entity.DbContext, ISystemDbContext
     {
-        public System.Data.Entity.DbSet<SysCurrency> SysCurrencies { get; set; } // SysCurrencies
+        public System.Data.Entity.DbSet<Currency> Currencies { get; set; } // Currency
 
         static SystemDbContext()
         {
@@ -115,12 +115,12 @@ namespace DataAccessLayer.Sys
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Configurations.Add(new SysCurrencyConfiguration());
+            modelBuilder.Configurations.Add(new CurrencyConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
-            modelBuilder.Configurations.Add(new SysCurrencyConfiguration(schema));
+            modelBuilder.Configurations.Add(new CurrencyConfiguration(schema));
             return modelBuilder;
         }
     }
@@ -143,7 +143,7 @@ namespace DataAccessLayer.Sys
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
     public class FakeSystemDbContext : ISystemDbContext
     {
-        public System.Data.Entity.DbSet<SysCurrency> SysCurrencies { get; set; }
+        public System.Data.Entity.DbSet<Currency> Currencies { get; set; }
 
         public FakeSystemDbContext()
         {
@@ -151,7 +151,7 @@ namespace DataAccessLayer.Sys
             _configuration = null;
             _database = null;
 
-            SysCurrencies = new FakeDbSet<SysCurrency>("CodeIso", "Designation", "Active");
+            Currencies = new FakeDbSet<Currency>("CodeIso", "Designation", "Active");
         }
 
         public int SaveChangesCount { get; private set; }
@@ -480,19 +480,24 @@ namespace DataAccessLayer.Sys
 
     #region POCO classes
 
-    // SysCurrencies
+    // Currency
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
-    public class SysCurrency
+    public class Currency
     {
         public string CodeIso { get; set; } // CodeIso (Primary key) (length: 3)
         public string Designation { get; set; } // Designation (Primary key) (length: 64)
         public string Unicode { get; set; } // Unicode (length: 32)
         public bool Active { get; set; } // Active (Primary key)
+
+        ///<summary>
+        /// test
+        ///</summary>
         public int? Id { get; set; } // Id
 
-        public SysCurrency()
+        public Currency()
         {
             Active = true;
+            Id = 111111;
         }
     }
 
@@ -500,18 +505,18 @@ namespace DataAccessLayer.Sys
 
     #region POCO Configuration
 
-    // SysCurrencies
+    // Currency
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
-    public class SysCurrencyConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SysCurrency>
+    public class CurrencyConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Currency>
     {
-        public SysCurrencyConfiguration()
+        public CurrencyConfiguration()
             : this("System")
         {
         }
 
-        public SysCurrencyConfiguration(string schema)
+        public CurrencyConfiguration(string schema)
         {
-            ToTable("SysCurrencies", schema);
+            ToTable("Currency", schema);
             HasKey(x => new { x.CodeIso, x.Designation, x.Active });
 
             Property(x => x.CodeIso).HasColumnName(@"CodeIso").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(3).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);

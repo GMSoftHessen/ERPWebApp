@@ -8,7 +8,7 @@ namespace BusinessLayer.Customize
         UserBO _UsercustomerBO;
         public UserViewModel(UserBO UserBO) 
         {
-            _ User BO = UserBO;
+            _UserBO = UserBO;
         }
     }
 }

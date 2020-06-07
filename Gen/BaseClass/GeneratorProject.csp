@@ -9,6 +9,8 @@
       <property name="Namespace">Persistance.Sales.Repository</property>
       <property name="BaseFolder">D:\ERPWebApp\BusinessLayer\Base</property>
       <property name="CustomizedFolder">D:\ERPWebApp\BusinessLayer\Customized</property>
+      <property name="BaseControllerFolder">D:\ERPWebApp\WebApp\Base\test</property>
+      <property name="ControllerFolder">D:\ERPWebApp\WebApp\Customized\test</property>
       <property name="SourceDatabase">
         <connectionString>$(ConnectionString1)</connectionString>
         <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>

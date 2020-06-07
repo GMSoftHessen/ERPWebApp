@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Base
 {
-    public  class CustomerBaseViewModel
+    public  class CustomerBaseViewModel:ICustomerViewModel
     {
         #region private members
         private CustomerBaseBO _CustomerBaseBO;

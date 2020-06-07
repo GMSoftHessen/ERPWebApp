@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Base
 {
-    public  class PermissionsBaseViewModel
+    public  class PermissionsBaseViewModel:IPermissionsViewModel
     {
         #region private members
         private PermissionsBaseBO _PermissionsBaseBO;

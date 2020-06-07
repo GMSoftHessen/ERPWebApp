@@ -6,7 +6,7 @@
 <%@ Import Namespace="SchemaExplorer" %>
 <%@ Import Namespace="CodeSmith.Core.Extensions" %>
 
-<% var tableName = SourceTable.Name.ToCSharpIdentifier().ToPascalCase(); %>  
+<% var tableName = SourceTable.Name; %>  
 <% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
 <% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
 
@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using DataAccessLayer.Sales;
+using DataAccessLayer.<%=tableNameShema%>;
 using ReusableGenericRepository;
 
 namespace BusinessLayer.Base

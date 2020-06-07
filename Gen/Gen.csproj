@@ -45,14 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BaseClass\BaseBOTemplate.cst" />
-    <None Include="BaseClass\GeneratorProject.csp">
-      <IncludeOutputs>False</IncludeOutputs>
-    </None>
     <None Include="BaseClass\BaseControllerTemplate.cst" />
     <None Include="BaseClass\BaseRepositoryTemplate.cst" />
     <None Include="BaseClass\BaseViewModelTemplate.cst" />
     <None Include="BaseClass\BOTemplate.cst" />
     <None Include="BaseClass\ControllerTemplate.cst" />
+    <None Include="BaseClass\GeneratorProject.csp">
+      <IncludeOutputs>False</IncludeOutputs>
+    </None>
+    <None Include="BaseClass\IBaseViewModel.cst" />
     <None Include="BaseClass\MasterTemplate.cst" />
     <None Include="BaseClass\RepositoryTemplate.cst" />
     <None Include="BaseClass\ViewModelTemplate.cst" />

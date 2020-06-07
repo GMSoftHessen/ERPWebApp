@@ -8,7 +8,7 @@ namespace BusinessLayer.Customize
         GroupBO _GroupcustomerBO;
         public GroupViewModel(GroupBO GroupBO) 
         {
-            _ Group BO = GroupBO;
+            _GroupBO = GroupBO;
         }
     }
 }
