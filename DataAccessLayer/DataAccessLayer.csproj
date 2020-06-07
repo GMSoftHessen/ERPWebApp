@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\Data.cs" />
+    <Compile Include="DTOs\MenuDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Sales\Sales.cs">
       <AutoGen>True</AutoGen>
@@ -80,9 +82,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\Generated\Muster\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Sales\Sales.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

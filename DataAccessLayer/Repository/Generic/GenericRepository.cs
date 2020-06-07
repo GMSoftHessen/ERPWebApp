@@ -12,7 +12,7 @@ using System.Linq.Expressions;
 
 namespace DisconnectedGenericRepository
 {
-  public class GenericRepository<TEntity> where TEntity : class
+  public abstract class GenericRepository<TEntity> where TEntity : class, IRepository
   {
     internal DbContext _context;
     internal DbSet<TEntity> _dbSet;

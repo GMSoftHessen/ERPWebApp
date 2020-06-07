@@ -3,72 +3,82 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using DataAccessLayer.Sales;
-
+using ReusableGenericRepository;
 
 namespace BusinessLayer.Base
 {
-    public abstract class CustomerBaseRepository
+    public  class CustomerBaseRepository
     {
-        public SalesDbContext DbContext { get; set; }
+        internal DbContext _context;
+        internal DbSet<Customer> _dbSet;
 
-        int _CountOfMaxRows;
-        public CustomerBaseRepository(int countOfMaxRows)
+        public CustomerBaseRepository(DbContext context)
         {
-            _CountOfMaxRows = countOfMaxRows;
-            _CountOfMaxRows = 500;
+            _context = context;
+            _dbSet = context.Set<Customer>();
         }
 
-        #region GET
-
-        public List<Customer> All()
+        public IEnumerable<Customer> All()
         {
-            return DbContext.Customers.OrderBy(o => o.Id).Take(_CountOfMaxRows).AsNoTracking().ToList();
+            return _dbSet.AsNoTracking().ToList();
         }
 
-        public IQueryable<Customer> AsIQueryableAll()
+        public IEnumerable<Customer> AllInclude
+        (params Expression<Func<Customer, object>>[] includeProperties)
         {
-            return DbContext.Customers.OrderBy(o => o.Id).Take(_CountOfMaxRows).AsNoTracking().AsQueryable();
+            return GetAllIncluding(includeProperties).ToList();
         }
 
-        public IEnumerable<Customer> AsIEnumerableAll()
+        public IEnumerable<Customer> FindByInclude
+          (Expression<Func<Customer, bool>> predicate,
+          params Expression<Func<Customer, object>>[] includeProperties)
         {
-            return DbContext.Customers.OrderBy(o => o.Id).Take(_CountOfMaxRows).AsNoTracking().AsEnumerable();
+            var query = GetAllIncluding(includeProperties);
+            IEnumerable<Customer> results = query.Where(predicate).ToList();
+            return results;
         }
 
-
-        #endregion GET
-
-        #region CURD
-        public Customer Find(int id)
+        private IQueryable<Customer> GetAllIncluding
+        (params Expression<Func<Customer, object>>[] includeProperties)
         {
-            Customer customer = DbContext.Customers.Find(id);
+            IQueryable<Customer> queryable = _dbSet.AsNoTracking();
 
-            if (customer == null)
-                customer = new Customer();
+            return includeProperties.Aggregate
+              (queryable, (current, includeProperty) => current.Include(includeProperty));
+        }
+        public IEnumerable<Customer> FindBy(Expression<Func<Customer, bool>> predicate)
+        {
 
-            return customer;
+            IEnumerable<Customer> results = _dbSet.AsNoTracking()
+              .Where(predicate).ToList();
+            return results;
         }
 
-        public void Insert(Customer customer)
+        public Customer FindByKey(int id)
         {
-            DbContext.Customers.Add(customer);
+            Expression<Func<Customer, bool>> lambda = Utilities.BuildLambdaForFindByKey<Customer>(id);
+            return _dbSet.AsNoTracking().SingleOrDefault(lambda);
         }
 
-        public void Update(Customer customer)
+        public void Insert(Customer entity)
         {
-            DbContext.Customers.Attach(customer);
-            DbContext.Entry(customer).State = EntityState.Modified;
+            _dbSet.Add(entity);
+        }
+
+        public void Update(Customer entity)
+        {
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            Customer customer = DbContext.Customers.Find(id);
-
-            if (customer != null)
-                DbContext.Customers.Remove(customer);
+            var entity = FindByKey(id);
+            _dbSet.Remove(entity);
         }
-        #endregion CURD
+
 
     }
 

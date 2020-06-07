@@ -74,6 +74,7 @@
     <Compile Include="Base\B_Sales\Customer\CustomerBaseBO.cs" />
     <Compile Include="Base\partial\CustomizeCTOR\CustomerBO.cs" />
     <Compile Include="Base\Interface\Sales\Customer\ICustomerBO.cs" />
+    <Compile Include="Repositories\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

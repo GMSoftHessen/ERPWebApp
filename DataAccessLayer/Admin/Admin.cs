@@ -38,6 +38,8 @@ namespace DataAccessLayer.Admin
     public interface IAdminDbContext : System.IDisposable
     {
         System.Data.Entity.DbSet<Group> Groups { get; set; } // Group
+        System.Data.Entity.DbSet<Menu> Menus { get; set; } // Menu
+        System.Data.Entity.DbSet<Permission> Permissions { get; set; } // permissions
         System.Data.Entity.DbSet<User> Users { get; set; } // User
 
         int SaveChanges();
@@ -62,6 +64,8 @@ namespace DataAccessLayer.Admin
     public class AdminDbContext : System.Data.Entity.DbContext, IAdminDbContext
     {
         public System.Data.Entity.DbSet<Group> Groups { get; set; } // Group
+        public System.Data.Entity.DbSet<Menu> Menus { get; set; } // Menu
+        public System.Data.Entity.DbSet<Permission> Permissions { get; set; } // permissions
         public System.Data.Entity.DbSet<User> Users { get; set; } // User
 
         static AdminDbContext()
@@ -118,12 +122,16 @@ namespace DataAccessLayer.Admin
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new GroupConfiguration());
+            modelBuilder.Configurations.Add(new MenuConfiguration());
+            modelBuilder.Configurations.Add(new PermissionConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
             modelBuilder.Configurations.Add(new GroupConfiguration(schema));
+            modelBuilder.Configurations.Add(new MenuConfiguration(schema));
+            modelBuilder.Configurations.Add(new PermissionConfiguration(schema));
             modelBuilder.Configurations.Add(new UserConfiguration(schema));
             return modelBuilder;
         }
@@ -148,6 +156,8 @@ namespace DataAccessLayer.Admin
     public class FakeAdminDbContext : IAdminDbContext
     {
         public System.Data.Entity.DbSet<Group> Groups { get; set; }
+        public System.Data.Entity.DbSet<Menu> Menus { get; set; }
+        public System.Data.Entity.DbSet<Permission> Permissions { get; set; }
         public System.Data.Entity.DbSet<User> Users { get; set; }
 
         public FakeAdminDbContext()
@@ -157,6 +167,8 @@ namespace DataAccessLayer.Admin
             _database = null;
 
             Groups = new FakeDbSet<Group>("Id");
+            Menus = new FakeDbSet<Menu>("Id");
+            Permissions = new FakeDbSet<Permission>("Id");
             Users = new FakeDbSet<User>("Id");
         }
 
@@ -506,6 +518,26 @@ namespace DataAccessLayer.Admin
         }
     }
 
+    // Menu
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
+    public class Menu
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public string Designation { get; set; } // Designation (length: 30)
+        public string IconCls { get; set; } // IconCls (length: 30)
+        public string ClassName { get; set; } // ClassName (length: 45)
+        public int? MenuId { get; set; } // Menu_id
+    }
+
+    // permissions
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
+    public class Permission
+    {
+        public int MenuId { get; set; } // Menu_id
+        public int GroupsId { get; set; } // Groups_id
+        public int Id { get; set; } // Id (Primary key)
+    }
+
     // User
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
     public class User
@@ -546,6 +578,48 @@ namespace DataAccessLayer.Admin
 
             Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.Name).HasColumnName(@"Name").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+        }
+    }
+
+    // Menu
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
+    public class MenuConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Menu>
+    {
+        public MenuConfiguration()
+            : this("Admin")
+        {
+        }
+
+        public MenuConfiguration(string schema)
+        {
+            ToTable("Menu", schema);
+            HasKey(x => x.Id);
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Designation).HasColumnName(@"Designation").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(30);
+            Property(x => x.IconCls).HasColumnName(@"IconCls").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(30);
+            Property(x => x.ClassName).HasColumnName(@"ClassName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(45);
+            Property(x => x.MenuId).HasColumnName(@"Menu_id").HasColumnType("int").IsOptional();
+        }
+    }
+
+    // permissions
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.5.0")]
+    public class PermissionConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Permission>
+    {
+        public PermissionConfiguration()
+            : this("Admin")
+        {
+        }
+
+        public PermissionConfiguration(string schema)
+        {
+            ToTable("permissions", schema);
+            HasKey(x => x.Id);
+
+            Property(x => x.MenuId).HasColumnName(@"Menu_id").HasColumnType("int").IsRequired();
+            Property(x => x.GroupsId).HasColumnName(@"Groups_id").HasColumnType("int").IsRequired();
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
         }
     }
 

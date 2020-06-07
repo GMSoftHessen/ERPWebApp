@@ -7,6 +7,9 @@
 @import 'font-ios-variables';
 @import 'extensions.js';
 
+@import "fontAwesome/font-awesome";
+@import "iconColors";
+
 $output-paths: null !default;
 
 @function get-resource-path($path, $pool: "path", $packageName: null) {
