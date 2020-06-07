@@ -41,13 +41,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\Group\GroupBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\Group\GroupBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\Group\GroupBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\Menu\MenuBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\Menu\MenuBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\Menu\MenuBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\permissions\permissionsBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\permissions\permissionsBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\permissions\permissionsBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\User\UserBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\User\UserBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Admin\User\UserBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Customer\CustomerBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Customer\CustomerBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Customer\CustomerBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Employee\EmployeeBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Employee\EmployeeBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Employee\EmployeeBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Product\ProductBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Product\ProductBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\Sales\Product\ProductBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\System\Currencies\CurrenciesBaseBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\System\Currencies\CurrenciesBaseRepository.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Base\System\Currencies\CurrenciesBaseViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\Group\GroupBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\Group\GroupRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\Group\GroupViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\Menu\MenuBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\Menu\MenuRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\Menu\MenuViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\permissions\permissionsBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\permissions\permissionsRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\permissions\permissionsViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\User\UserBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\User\UserRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Admin\User\UserViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Customer\CustomerBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Customer\CustomerRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Customer\CustomerViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Employee\EmployeeBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Employee\EmployeeRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Employee\EmployeeViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Product\ProductBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Product\ProductRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\Sales\Product\ProductViewModel.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\System\Currencies\CurrenciesBO.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\System\Currencies\CurrenciesRepositoryTemplate.cs" />
+    <Compile Include="BaseClass\%24%28ProjectDir%29\BusinessLayer\Customized\System\Currencies\CurrenciesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BaseClass\BaseBOTemplate.cst" />
+    <None Include="BaseClass\BaseClassGeneratorProject.csp">
+      <IncludeOutputs>False</IncludeOutputs>
+    </None>
+    <None Include="BaseClass\BaseControllerTemplate.cst" />
+    <None Include="BaseClass\BaseRepositoryTemplate.cst" />
+    <None Include="BaseClass\BaseViewModelTemplate.cst" />
+    <None Include="BaseClass\BOTemplate.cst" />
+    <None Include="BaseClass\ControllerTemplate.cst" />
+    <None Include="BaseClass\MasterTemplate.cst" />
+    <None Include="BaseClass\RepositoryTemplate.cst" />
+    <None Include="BaseClass\ViewModelTemplate.cst" />
     <None Include="Project.csp" />
-    <None Include="Template1.cst" />
-    <None Include="Template2.cst" />
-    <None Include="Template3.cst" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

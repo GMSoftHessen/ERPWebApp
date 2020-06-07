@@ -1,82 +1,121 @@
 ﻿
 using BusinessLayer.Base;
 using DataAccessLayer.Sales;
+using ReusableGenericRepository;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace BusinessLayer.BO
 {
-    public abstract class CustomerBaseBO
+    public  class CustomerBaseBO
     {
-        internal DbContext _context;
-        internal DbSet<Customer> _dbSet;
+        public CustomerBaseRepository _customerBaseRepository;
 
-        public CustomerBaseBO(DbContext context)
+        public SalesDbContext _DbContext
         {
-            _context = context;
-            _dbSet = context.Set<Customer>();
+            get { return new SalesDbContext(); }
+
+        }
+        public CustomerBaseBO(CustomerBaseRepository customerRepository)
+        {
+            _customerBaseRepository = customerRepository;
         }
 
-        public IEnumerable<Customer> All()
+
+        public List<Customer> GetAll()
         {
-            return _dbSet.AsNoTracking().ToList();
+            try
+            {
+                using (_customerBaseRepository._context = _DbContext)
+                {
+                    List<Customer> customers = _customerBaseRepository.All().ToList();
+                }
+
+                using (_customerBaseRepository._context = _DbContext)
+                {
+                    List<Customer> result = _customerBaseRepository.All().ToList();
+
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
 
-        public IEnumerable<Customer> AllInclude
-        (params Expression<Func<Customer, object>>[] includeProperties)
+
+        public Customer Find(int id)
         {
-            return GetAllIncluding(includeProperties).ToList();
+            try
+            {
+                using (_customerBaseRepository._context = _DbContext)
+                {
+                    Customer result = _customerBaseRepository.FindByKey(id);
+
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
 
-        public IEnumerable<Customer> FindByInclude
-          (Expression<Func<Customer, bool>> predicate,
-          params Expression<Func<Customer, object>>[] includeProperties)
+        public int Insert(Customer customer)
         {
-            var query = GetAllIncluding(includeProperties);
-            IEnumerable<Customer> results = query.Where(predicate).ToList();
-            return results;
+            try
+            {
+                using (_customerBaseRepository._context = _DbContext)
+                {
+                    _customerBaseRepository.Insert(customer);
+                    _customerBaseRepository._context.SaveChanges();
+                    return customer.Id;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
 
-        private IQueryable<Customer> GetAllIncluding
-        (params Expression<Func<Customer, object>>[] includeProperties)
-        {
-            IQueryable<Customer> queryable = _dbSet.AsNoTracking();
 
-            return includeProperties.Aggregate
-              (queryable, (current, includeProperty) => current.Include(includeProperty));
-        }
-        public IEnumerable<Customer> FindBy(Expression<Func<Customer, bool>> predicate)
-        {
 
-            IEnumerable<Customer> results = _dbSet.AsNoTracking()
-              .Where(predicate).ToList();
-            return results;
-        }
-
-        public Customer FindByKey(int id)
+        public void Update(Customer customer)
         {
-            Expression<Func<Customer, bool>> lambda = Utilities.BuildLambdaForFindByKey<Customer>(id);
-            return _dbSet.AsNoTracking().SingleOrDefault(lambda);
+            try
+            {
+                using (_customerBaseRepository._context = _DbContext)
+                {
+                    _customerBaseRepository.Update(customer);
+                    _customerBaseRepository._context.SaveChanges();
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
 
-        public void Insert(Customer entity)
-        {
-            _dbSet.Add(entity);
-        }
-
-        public void Update(Customer entity)
-        {
-            _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
-        }
 
         public void Delete(int id)
         {
-            var entity = FindByKey(id);
-            _dbSet.Remove(entity);
+            try
+            {
+                using (_customerBaseRepository._context = _DbContext)
+                {
+                    _customerBaseRepository.Delete(id);
+                    _customerBaseRepository._context.SaveChanges();
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
-
 
     }
 }

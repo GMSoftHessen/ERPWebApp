@@ -50,30 +50,15 @@
   <ItemGroup>
     <Compile Include="Base\B_Admin\User\UserBaseBO.cs" />
     <Compile Include="Base\B_Admin\User\UserBaseRepository.cs" />
-    <Compile Include="Base\B_Sales\Customer\CustomerBaseRepository.cs" />
     <Compile Include="Base\B_Admin\User\UserBaseViewModel.cs" />
-    <Compile Include="Base\Config\MainConfig.cs" />
-    <Compile Include="Base\Interface\Admin\User\IUserBO.cs" />
-    <Compile Include="Base\Interface\Admin\User\IUserRepository.cs" />
-    <Compile Include="Base\Interface\Admin\User\IUserViewModel.cs" />
-    <Compile Include="Base\Interface\Sales\Customer\ICustomerViewModel.cs" />
-    <Compile Include="Base\B_Sales\Customer\CustomerBaseViewModel.cs" />
-    <Compile Include="Base\partial\CustomizeCTOR\CustomerViewModel.partial.cs" />
-    <Compile Include="Base\partial\UserCTOR\UserRepository.cs" />
-    <Compile Include="Base\partial\UserCTOR\UserBO.cs" />
-    <Compile Include="Base\partial\UserCTOR\UserViewModel.cs" />
-    <Compile Include="Customize\Admin\User\UserViewModel.cs" />
-    <Compile Include="Customize\Admin\User\UserBO.cs" />
-    <Compile Include="Customize\Admin\User\UserRepository.cs" />
-    <Compile Include="Customize\Sales\Customer\CustomerBO.cs" />
-    <Compile Include="Customize\Sales\Customer\CustomerRepository.cs" />
-    <Compile Include="Customize\Sales\Customer\CustomerViewModel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Base\partial\CustomizeCTOR\CustomerRepository.cs" />
-    <Compile Include="Base\Interface\Sales\Customer\ICustomerRepository.cs" />
     <Compile Include="Base\B_Sales\Customer\CustomerBaseBO.cs" />
+    <Compile Include="Base\B_Sales\Customer\CustomerBaseRepository.cs" />
+    <Compile Include="Base\B_Sales\Customer\CustomerBaseViewModel.cs" />
+    <Compile Include="Base\Config\MainConfig.cs" />
     <Compile Include="Base\partial\CustomizeCTOR\CustomerBO.cs" />
-    <Compile Include="Base\Interface\Sales\Customer\ICustomerBO.cs" />
+    <Compile Include="Base\partial\CustomizeCTOR\CustomerRepository.cs" />
+    <Compile Include="Base\partial\CustomizeCTOR\CustomerViewModel.partial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +71,8 @@
       <Name>DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Base\Interface\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,24 @@
+﻿
+<%@ Template Language="C#" TargetLanguage="C#" Description="An example on creating a class with properties from a database table." %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="DataSource" Optional="False" %>
+
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.Core.Extensions" %>
+
+<% var tableName = SourceTable.Name.ToCSharpIdentifier().ToPascalCase(); %>  
+<% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
+<% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
+
+
+namespace BusinessLayer.Customize
+{
+    public class <%= tableName %>BO
+    {
+        <%= tableName %>Repository _<%= tableName %>Repository;
+    public <%= tableName %>BO(<%= tableName %>Repository <%= tableName %>Repository) 
+        {
+            _<%= tableName %>Repository = <%= tableName %>Repository;
+        }
+    }
+}

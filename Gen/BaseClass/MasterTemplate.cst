@@ -1,0 +1,168 @@
+﻿
+
+<%@ CodeTemplate OutputType="None" Language="C#" TargetLanguage="Text" Debug="True" Description="Demonstrates the use of a sub-template." %>
+<%@ Property Name="SourceDatabase" Type="SchemaExplorer.DatabaseSchema" Category="DataSource" Optional="False" %>
+<%@ Property Name="Namespace" Type="System.String" Optional="False"  Category="" Default="Persistance.Sales.Repository" Optional="False" %>
+<%@ Property Name="BaseFolder" Type="System.String" Optional="False"  Category=""  Default="Base" Optional="False" %>
+<%@ Property Name="CustomizedFolder" Type="System.String" Optional="False"  Category=""  Default="Customized" Optional="False" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import NameSpace="System.IO" %>
+
+<%@ Register Name="BaseRepositoryTemplate" Template="BaseRepositoryTemplate.cst" %>
+<%@ Register Name="BaseBOTemplate" Template="BaseBOTemplate.cst" %>
+<%@ Register Name="BaseViewModelTemplate" Template="BaseViewModelTemplate.cst" %>
+
+<%@ Register Name="BOTemplate" Template="BOTemplate.cst" %>
+<%@ Register Name="RepositoryTemplate" Template="RepositoryTemplate.cst" %>
+<%@ Register Name="ViewModelTemplate" Template="ViewModelTemplate.cst" %>
+
+<%@ Register Name="ControllerTemplate" Template="ControllerTemplate.cst" %>
+<%@ Register Name="BaseControllerTemplate" Template="BaseControllerTemplate.cst" %>
+
+
+
+
+<script runat="template">
+
+public override void Render(TextWriter writer)
+{
+    if(!Directory.Exists(BaseFolder))
+        Directory.CreateDirectory(BaseFolder);
+    
+     if(!Directory.Exists(CustomizedFolder))
+        Directory.CreateDirectory(CustomizedFolder);
+    
+    foreach(TableSchema table in SourceDatabase.Tables)
+    {
+        string tableNameShema = table.Owner.ToCSharpIdentifier().ToPascalCase();
+        
+        CreateBaseRepository(table,tableNameShema);     
+        CreateBaseBO(table,tableNameShema);
+        CreateBaseViewModel(table,tableNameShema);
+        
+        CreateRepository(table, tableNameShema);
+        CreateBO(table, tableNameShema);
+        CreateViewModel(table, tableNameShema);        
+        
+       // CreateBaseController(table);
+       // CreateController(table);
+        
+    }    
+}
+public void CreateBaseRepository(TableSchema table, string tableNameShema)
+{
+    string filePath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"BaseRepository.cs" ;
+    string folderPath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    if(AllowCreate(filePath))
+    {   
+    
+        Directory.CreateDirectory(folderPath);    
+        
+        BaseRepositoryTemplate repositoryTemplate = this.Create<BaseRepositoryTemplate>();
+        repositoryTemplate.SourceTable = table;
+        string fileName = String.Format("{0}/{1}BaseRepository.cs", folderPath, table.Name);
+        OutputFile  outputFile = new OutputFile(fileName);
+        repositoryTemplate.RenderToFile(outputFile, true);
+    }
+}
+
+public void CreateBaseBO(TableSchema table, string tableNameShema)
+{
+    string filePath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"BaseBO.cs" ;
+    string folderPath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    if(AllowCreate(filePath))
+    {   
+    
+        Directory.CreateDirectory(folderPath);    
+        
+        BaseBOTemplate boTemplate = this.Create<BaseBOTemplate>();
+        boTemplate.SourceTable = table;
+        string fileName = String.Format("{0}/{1}BaseBO.cs", folderPath, table.Name);
+        OutputFile  outputFile = new OutputFile(fileName);
+        boTemplate.RenderToFile(outputFile, true);
+    }
+  
+}
+
+public void CreateBaseViewModel(TableSchema table, string tableNameShema)
+{
+    string filePath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"BaseViewModel.cs" ;
+    string folderPath =  BaseFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    
+    if(AllowCreate(filePath))
+    {   
+    
+        Directory.CreateDirectory(folderPath);    
+        
+        BaseViewModelTemplate viewModelTemplate = this.Create<BaseViewModelTemplate>();
+        viewModelTemplate.SourceTable = table;
+        string fileName = String.Format("{0}/{1}BaseViewModel.cs", folderPath, table.Name);
+        OutputFile  outputFile = new OutputFile(fileName);
+        viewModelTemplate.RenderToFile(outputFile, true);
+    }
+  
+}
+
+public void CreateRepository(TableSchema table, string tableNameShema)
+{
+    string filePath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"Repository.cs" ;
+    string folderPath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    
+    if(AllowCreate(filePath))
+    {   
+    
+        Directory.CreateDirectory(folderPath);    
+        
+        RepositoryTemplate repositoryTemplate = this.Create<RepositoryTemplate>();
+        repositoryTemplate.SourceTable = table;
+        string fileName = String.Format("{0}/{1}RepositoryTemplate.cs", folderPath, table.Name);
+        OutputFile  outputFile = new OutputFile(fileName);
+        repositoryTemplate.RenderToFile(outputFile, true);
+    }
+}
+
+public void CreateBO(TableSchema table, string tableNameShema)
+{
+    string filePath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"BO.cs" ;
+    string folderPath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    
+    if(AllowCreate(filePath))
+    {   
+    
+        Directory.CreateDirectory(folderPath);    
+        
+        BOTemplate bOTemplate = this.Create<BOTemplate>();
+        bOTemplate.SourceTable = table;
+        string fileName = String.Format("{0}/{1}BO.cs", folderPath, table.Name);
+        OutputFile  outputFile = new OutputFile(fileName);
+        bOTemplate.RenderToFile(outputFile, true);
+    }
+  
+}
+
+public void CreateViewModel(TableSchema table, string tableNameShema)
+{
+   string filePath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name+"\\" +table.Name+"ViewModel.cs" ;
+    string folderPath =  CustomizedFolder + "\\"  + tableNameShema +  "\\" + table.Name ;
+    
+    if(AllowCreate(filePath))
+    {   
+    
+        Directory.CreateDirectory(folderPath);    
+        
+        ViewModelTemplate viewModelTemplate = this.Create<ViewModelTemplate>();
+        viewModelTemplate.SourceTable = table;
+        string fileName = String.Format("{0}/{1}ViewModel.cs", folderPath, table.Name);
+        OutputFile  outputFile = new OutputFile(fileName);
+        viewModelTemplate.RenderToFile(outputFile, true);
+    }
+  
+}
+
+public bool AllowCreate(string folderName)
+{
+    
+    return !Directory.Exists(folderName);
+}
+
+</script>

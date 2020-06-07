@@ -1,0 +1,62 @@
+﻿
+<%@ Template Language="C#" TargetLanguage="C#" Description="An example on creating a class with properties from a database table." %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="DataSource" Optional="False" %>
+
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.Core.Extensions" %>
+
+<% var tableName = SourceTable.Name.ToCSharpIdentifier().ToPascalCase(); %>  
+<% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
+<% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
+
+using BusinessLayer.BO;
+using DataAccessLayer.Sales;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLayer.Base
+{
+    public  class <%= tableName %>BaseViewModel
+    {
+        #region private members
+        private <%= tableName %>BaseBO _<%= tableName %>BaseBO;
+        #endregion private members
+
+        #region abfragen
+        public <%= tableName %>BaseViewModel(<%= tableName %>BaseBO <%= tableName %>BO)
+        {
+            _<%= tableName %>BaseBO = <%= tableName %>BO;
+        }
+
+        public List<<%= tableName %>> GetAll()
+        {
+            return _<%= tableName %>BaseBO.GetAll();
+        }
+        public <%= tableName %> Find(int id)
+        {
+            return _<%= tableName %>BaseBO.Find(id);
+        }
+
+        public int Insert(<%= tableName %> <%= tableName %>)
+        {
+            return _<%= tableName %>BaseBO.Insert(<%= tableName %>);
+        }
+
+        public void Update(<%= tableName %> <%= tableName %>)
+        {
+            _<%= tableName %>BaseBO.Update(<%= tableName %>);
+        }
+
+        public void Delete(int id)
+        {
+            _<%= tableName %>BaseBO.Delete(id);
+        }
+        #endregion abfragen
+
+       
+    }
+}

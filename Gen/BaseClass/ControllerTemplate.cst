@@ -1,0 +1,142 @@
+﻿
+<%@ Template Language="C#" TargetLanguage="C#" Description="An example on creating a class with properties from a database table." %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="DataSource" Optional="False" %>
+
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.Core.Extensions" %>
+
+<% var tableName = SourceTable.Name.ToCSharpIdentifier().ToPascalCase(); %>  
+<% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
+<% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
+
+using BusinessLayer.Base;
+using DataAccessLayer.<%= tableNameShema %>;
+using System;
+using System.Web.Http;
+
+namespace WebApp.Controllers
+{
+    [RoutePrefix("api")]
+    public class <%= tableName %>Controller : ApiController
+    {
+        I<%= tableName %>ViewModel _I<%= tableName %>ViewModel;
+        public <%= tableName %>Controller(I<%= tableName %>ViewModel <%= tableName.ToCamelCase() %>ViewModel)
+        {
+            _I<%= tableName %>ViewModel =  <%= tableName.ToCamelCase() %>ViewModel;
+        }
+
+        [Route("<%= tableName %>s")]
+        [HttpGet]
+        public IHttpActionResult GetAll()
+        {
+            try
+            {
+                var result = _I<%= tableName %>ViewModel.GetAll();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [Route(" <%= tableName %>/{<%= tableName.ToCamelCase() %>Id}")]
+        [HttpGet]
+        public IHttpActionResult Get<%= tableName %>(int  <%= tableName.ToCamelCase() %>Id)
+        {
+            try
+            {
+                var result = _I<%= tableName %>ViewModel.Find( <%= tableName.ToCamelCase() %>Id);
+                if (result == null)
+                    return NotFound();
+
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+
+        [Route("<%= tableName %>")]
+        [HttpPost]
+        public IHttpActionResult Post([FromBody]  <%= tableName %>  <%= tableName.ToCamelCase() %>)
+        {
+            try
+            {
+                int id = 0;
+                if (ModelState.IsValid)
+                {
+                    id = _I<%= tableName %>ViewModel.Insert( <%= tableName.ToCamelCase() %>);
+                    return Ok("Yes :" + id);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return BadRequest();
+        }
+
+        [Route("<%= tableName %>/{id}")]
+        [HttpPut]
+        public IHttpActionResult Put(int id, [FromBody]  <%= tableName %>  <%= tableName.ToCamelCase() %>)
+        {
+            try
+            {
+                if (id !=  <%= tableName.ToCamelCase() %>?.Id)
+                    return BadRequest();
+
+                if (ModelState.IsValid)
+                {
+                    _I<%= tableName %>ViewModel.Update( <%= tableName.ToCamelCase() %>);
+                    //return Ok("Yes :" + id);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return BadRequest();
+        }
+
+        [Route("<%= tableName %>/{id}")]
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                if (id == 0)
+                    return BadRequest();
+                _I<%= tableName %>ViewModel.Delete(id);
+
+                //_ICustomerViewModel.Update(customer);
+                //return Ok("Yes :" + id);
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return BadRequest();
+        }
+
+        // GET
+        // POST
+        // PUT
+        // PATCH
+        // DELETE
+
+        // 201 Created
+        // 304 Not Modified
+        // 404 Not Found
+        // 401 Unauthorized
+        // 403 Forbidden  
+    }
+}

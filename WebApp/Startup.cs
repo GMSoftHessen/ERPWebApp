@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using BusinessLayer.Customize;
+
 using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
@@ -11,6 +11,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using IdentityServer3.AccessTokenValidation;
 
 namespace WebApp
 {
@@ -49,26 +50,32 @@ namespace WebApp
 
            
 
-            builder.RegisterAssemblyTypes(typeof(CustomerRepository).Assembly)
-                    .Where(t => t.Name.EndsWith("Repository"))                  
-                    .As(t => t.GetInterfaces()?.FirstOrDefault(
-                        i => i.Name == "I" + t.Name)).InstancePerRequest();
+            //builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
+            //        .Where(t => t.Name.EndsWith("Repository"))                  
+            //        .As(t => t.GetInterfaces()?.FirstOrDefault(
+            //            i => i.Name == "I" + t.Name)).InstancePerRequest();
 
-            builder.RegisterAssemblyTypes(typeof(CustomerBO).Assembly)
-                    .Where(t => t.Name.EndsWith("BO"))
-                    .As(t => t.GetInterfaces()?.FirstOrDefault(
-                        i => i.Name == "I" + t.Name)).InstancePerRequest();
+            //builder.RegisterAssemblyTypes(typeof(UserBO).Assembly)
+            //        .Where(t => t.Name.EndsWith("BO"))
+            //        .As(t => t.GetInterfaces()?.FirstOrDefault(
+            //            i => i.Name == "I" + t.Name)).InstancePerRequest();
 
-            builder.RegisterAssemblyTypes(typeof(CustomerViewModel).Assembly)
-                   .Where(t => t.Name.EndsWith("ViewModel"))
-                   .As(t => t.GetInterfaces()?.FirstOrDefault(
-                       i => i.Name == "I" + t.Name)).InstancePerRequest();
+            //builder.RegisterAssemblyTypes(typeof(UserViewModel).Assembly)
+            //       .Where(t => t.Name.EndsWith("ViewModel"))
+            //       .As(t => t.GetInterfaces()?.FirstOrDefault(
+            //           i => i.Name == "I" + t.Name)).InstancePerRequest();
 
 
 
             IContainer container = builder.Build();           
 
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+            {
+                Authority = "http://localhost:60539/"
+            });
+
             app.UseWebApi(config)
                 .UseAutofacMiddleware(container)
                 .UseAutofacWebApi(config);

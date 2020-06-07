@@ -1,7 +1,7 @@
 ﻿
 using BusinessLayer.BO;
 using BusinessLayer.Base;
-
+using DataAccessLayer.Admin;
 
 namespace BusinessLayer.Customize
 {
@@ -12,6 +12,9 @@ namespace BusinessLayer.Customize
 
         }
 
-
+        public User GetUser(string username)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

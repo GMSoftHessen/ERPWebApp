@@ -1,0 +1,133 @@
+﻿
+<%@ Template Language="C#" TargetLanguage="C#" Description="An example on creating a class with properties from a database table." %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="DataSource" Optional="False" %>
+
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.Core.Extensions" %>
+
+<% var tableName = SourceTable.Name.ToCSharpIdentifier().ToPascalCase(); %>  
+<% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
+<% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
+
+
+using BusinessLayer.Base;
+using DataAccessLayer.Sales;
+using ReusableGenericRepository;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace BusinessLayer.BO
+{
+    public  class <%= tableName %>BaseBO
+    {
+        public <%= tableName %>BaseRepository _<%= tableName %>BaseRepository;
+
+        public SalesDbContext _DbContext
+        {
+            get { return new SalesDbContext(); }
+
+        }
+        public <%= tableName %>BaseBO(<%= tableName %>BaseRepository <%= tableName %>Repository)
+        {
+            _<%= tableName %>BaseRepository = <%= tableName %>Repository;
+        }
+
+
+        public List<<%= tableName %>> GetAll()
+        {
+            try
+            {
+                using (_<%= tableName %>BaseRepository._context = _DbContext)
+                {
+                    List<<%= tableName %>> <%= tableName %>s = _<%= tableName %>BaseRepository.All().ToList();
+                }
+
+                using (_<%= tableName %>BaseRepository._context = _DbContext)
+                {
+                    List<<%= tableName %>> result = _<%= tableName %>BaseRepository.All().ToList();
+
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+
+        public <%= tableName %> Find(int id)
+        {
+            try
+            {
+                using (_<%= tableName %>BaseRepository._context = _DbContext)
+                {
+                    <%= tableName %> result = _<%= tableName %>BaseRepository.FindByKey(id);
+
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+        public int Insert(<%= tableName %> <%= tableName %>)
+        {
+            try
+            {
+                using (_<%= tableName %>BaseRepository._context = _DbContext)
+                {
+                    _<%= tableName %>BaseRepository.Insert(<%= tableName %>);
+                    _<%= tableName %>BaseRepository._context.SaveChanges();
+                    return <%= tableName %>.Id;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+
+
+        public void Update(<%= tableName %> <%= tableName %>)
+        {
+            try
+            {
+                using (_<%= tableName %>BaseRepository._context = _DbContext)
+                {
+                    _<%= tableName %>BaseRepository.Update(<%= tableName %>);
+                    _<%= tableName %>BaseRepository._context.SaveChanges();
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+
+        public void Delete(int id)
+        {
+            try
+            {
+                using (_<%= tableName %>BaseRepository._context = _DbContext)
+                {
+                    _<%= tableName %>BaseRepository.Delete(id);
+                    _<%= tableName %>BaseRepository._context.SaveChanges();
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+    }
+}

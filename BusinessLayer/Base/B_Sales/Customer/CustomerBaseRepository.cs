@@ -1,4 +1,6 @@
 ﻿
+
+
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,16 +11,11 @@ using ReusableGenericRepository;
 
 namespace BusinessLayer.Base
 {
-    public  class CustomerBaseRepository
+    public class CustomerBaseRepository
     {
-        internal DbContext _context;
-        internal DbSet<Customer> _dbSet;
-
-        public CustomerBaseRepository(DbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<Customer>();
-        }
+        internal DbContext _context { get; set; }
+        public DbSet<Customer> _dbSet { get { return _context.Set<Customer>();  } }
+       
 
         public IEnumerable<Customer> All()
         {

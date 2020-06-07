@@ -1,16 +1,14 @@
 ﻿
-using BusinessLayer.Base;
-using DataAccessLayer.Sales;
+
 
 namespace BusinessLayer.Customize
 {
-    public partial class CustomerViewModel : CustomerBaseViewModel, ICustomerViewModel
+    public partial class <%= tableName %>ViewModel 
     {
-        ICustomerBO _ICustomerBO;
-        public CustomerViewModel(ICustomerBO customerBO) : base(customerBO)
+        <%= tableName %>BO _<%= tableName %>customerBO;
+        public <%= tableName %>ViewModel(<%= tableName %>BO <%= tableName %>BO) 
         {
-            _ICustomerBO = customerBO;
+            _ <%= tableName %> BO = <%= tableName %>BO;
         }
     }
-
 }

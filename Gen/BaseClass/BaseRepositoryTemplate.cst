@@ -1,0 +1,102 @@
+﻿
+<%@ Template Language="C#" TargetLanguage="C#" Description="An example on creating a class with properties from a database table." %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="DataSource" Optional="False" %>
+
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.Core.Extensions" %>
+
+<% var tableName = SourceTable.Name.ToCSharpIdentifier().ToPascalCase(); %>  
+<% var tableNameShema = SourceTable.Owner.ToCSharpIdentifier().ToPascalCase(); %> 
+<% var tableNamePlural = StringUtil.ToPlural(tableName); %> 
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+using DataAccessLayer.Sales;
+using ReusableGenericRepository;
+
+namespace BusinessLayer.Base
+{
+    public  class <%= tableName %>BaseRepository
+    {
+        internal DbContext _context;
+        internal DbSet<<%= tableName %>> _dbSet;
+        
+        internal DbContext _context { get; set; }
+        internal DbSet<%= tableName %> _dbSet { get { return _context.Set<<%= tableName %>>();  } }
+
+        public <%= tableName %>BaseRepository(DbContext context)
+        {
+            _context = context;
+            _dbSet = context.Set<<%= tableName %>>();
+        }
+
+        public IEnumerable<<%= tableName %>> All()
+        {
+            return _dbSet.AsNoTracking().ToList();
+        }
+
+        public IEnumerable<<%= tableName %>> AllInclude
+        (params Expression<Func<<%= tableName %>, object>>[] includeProperties)
+        {
+            return GetAllIncluding(includeProperties).ToList();
+        }
+
+        public IEnumerable<<%= tableName %>> FindByInclude
+          (Expression<Func<<%= tableName %>, bool>> predicate,
+          params Expression<Func<<%= tableName %>, object>>[] includeProperties)
+        {
+            var query = GetAllIncluding(includeProperties);
+            IEnumerable<<%= tableName %>> results = query.Where(predicate).ToList();
+            return results;
+        }
+
+        private IQueryable<<%= tableName %>> GetAllIncluding
+        (params Expression<Func<<%= tableName %>, object>>[] includeProperties)
+        {
+            IQueryable<<%= tableName %>> queryable = _dbSet.AsNoTracking();
+
+            return includeProperties.Aggregate
+              (queryable, (current, includeProperty) => current.Include(includeProperty));
+        }
+        public IEnumerable<<%= tableName %>> FindBy(Expression<Func<<%= tableName %>, bool>> predicate)
+        {
+
+            IEnumerable<<%= tableName %>> results = _dbSet.AsNoTracking()
+              .Where(predicate).ToList();
+            return results;
+        }
+
+        public <%= tableName %> FindByKey(int id)
+        {
+            Expression<Func<<%= tableName %>, bool>> lambda = Utilities.BuildLambdaForFindByKey<<%= tableName %>>(id);
+            return _dbSet.AsNoTracking().SingleOrDefault(lambda);
+        }
+
+        public void Insert(<%= tableName %> entity)
+        {
+            _dbSet.Add(entity);
+        }
+
+        public void Update(<%= tableName %> entity)
+        {
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            var entity = FindByKey(id);
+            _dbSet.Remove(entity);
+        }
+
+
+    }
+
+
+}

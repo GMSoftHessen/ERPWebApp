@@ -1,15 +1,13 @@
-﻿using BusinessLayer.BO;
-using BusinessLayer.Base;
-
+﻿
 
 namespace BusinessLayer.Customize
 {
-    public partial class CustomerBO : CustomerBaseBO, ICustomerBO
+    public class <%= tableName %>BO
     {
-        public CustomerBO(ICustomerRepository customerRepository) : base(customerRepository)
+        <%= tableName %>Repository _<%= tableName %>Repository;
+    public <%= tableName %>BO(<%= tableName %>Repository <%= tableName %>Repository) 
         {
-
+            _<%= tableName %>Repository = <%= tableName %>Repository;
         }
-
     }
 }

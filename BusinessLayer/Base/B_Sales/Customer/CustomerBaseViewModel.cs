@@ -9,41 +9,43 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Base
 {
-    public abstract class CustomerBaseViewModel
+    public  class CustomerBaseViewModel
     {
+        #region private members
+        private CustomerBaseBO _customerBaseBO;
+        #endregion private members
+
         #region abfragen
-        public CustomerBaseViewModel(ICustomerBO customerBO)
+        public CustomerBaseViewModel(CustomerBaseBO customerBO)
         {
-            _customerBO = customerBO;
+            _customerBaseBO = customerBO;
         }
 
         public List<Customer> GetAll()
         {
-            return _customerBO.GetAll();
+            return _customerBaseBO.GetAll();
         }
         public Customer Find(int id)
         {
-            return _customerBO.Find(id);
+            return _customerBaseBO.Find(id);
         }
 
         public int Insert(Customer customer)
         {
-            return _customerBO.Insert(customer);
+            return _customerBaseBO.Insert(customer);
         }
 
         public void Update(Customer customer)
         {
-            _customerBO.Update(customer);
+            _customerBaseBO.Update(customer);
         }
 
         public void Delete(int id)
         {
-            _customerBO.Delete(id);
+            _customerBaseBO.Delete(id);
         }
         #endregion abfragen
 
-        #region private members
-        private ICustomerBO _customerBO;
-        #endregion private members
+       
     }
 }

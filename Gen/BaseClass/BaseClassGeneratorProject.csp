@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <defaultTemplate path="BaseBOTemplate.cst" />
+  <variables>
+    <add key="ConnectionString1" value="Data Source=DESKTOP-9UAIISP;Initial Catalog=GxPErp;User ID=admin;Password=admin" />
+  </variables>
+  <propertySets>
+    <propertySet name="BaseBOTemplate" template="MasterTemplate.cst">
+      <property name="Namespace">Persistance.Sales.Repository</property>
+      <property name="BaseFolder">D:\ERPWebApp\BusinessLayer\Base</property>
+      <property name="CustomizedFolder">D:\ERPWebApp\BusinessLayer\Customized</property>
+      <property name="SourceDatabase">
+        <connectionString>$(ConnectionString1)</connectionString>
+        <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>
+      </property>
+    </propertySet>
+  </propertySets>
+</codeSmith>
