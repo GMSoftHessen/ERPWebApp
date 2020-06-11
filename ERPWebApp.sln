@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProccessing", "ImageProccessing\ImageProccessing.csproj", "{6305E37D-C428-4610-9E16-A1738B33294C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin", "Owin\Owin.csproj", "{9F94DDBA-6C54-467D-AA9F-FD8575435F17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WenApiOwin", "WenApiOwin\WenApiOwin.csproj", "{583CC73E-E034-4F9E-A930-F63287EB3B8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,10 +71,10 @@ Global
 		{6305E37D-C428-4610-9E16-A1738B33294C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6305E37D-C428-4610-9E16-A1738B33294C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6305E37D-C428-4610-9E16-A1738B33294C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F94DDBA-6C54-467D-AA9F-FD8575435F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F94DDBA-6C54-467D-AA9F-FD8575435F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F94DDBA-6C54-467D-AA9F-FD8575435F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F94DDBA-6C54-467D-AA9F-FD8575435F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583CC73E-E034-4F9E-A930-F63287EB3B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583CC73E-E034-4F9E-A930-F63287EB3B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583CC73E-E034-4F9E-A930-F63287EB3B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583CC73E-E034-4F9E-A930-F63287EB3B8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
