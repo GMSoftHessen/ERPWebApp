@@ -3,7 +3,15 @@
     extend: 'Ext.form.Panel',
     xtype: 'form-register',
 
-    controller: 'login',
+
+    requires: [
+        'App.view.login.RegisterFormController',
+        'App.view.login.RegisterFromViewModel',
+    ],
+
+    controller: 'RegisterFormController',
+    viewModel: 'RegisterFromViewModel',
+   
 
     frame: true,
     title: 'Register',
@@ -19,8 +27,7 @@
     },
 
     items: [{
-        xtype: 'fieldset',
-        reference: 'RegisterFieldset',
+        xtype: 'fieldset',    
         title: 'User Info',
         defaultType: 'textfield',
         defaults: {
@@ -28,9 +35,10 @@
         },
 
         items: [
-            { allowBlank: false, fieldLabel: 'User ID', name: 'user', emptyText: 'user id' },
-            { allowBlank: false, fieldLabel: 'Password', name: 'pass', emptyText: 'password', inputType: 'password' },
-            { allowBlank: false, fieldLabel: 'Verify', name: 'pass', emptyText: 'password', inputType: 'password' }
+           
+            { allowBlank: false, fieldLabel: 'User ID', name: 'Email', emptyText: 'user id', bind: '{RegisterFromViewModel.Email}' },
+            { allowBlank: false, fieldLabel: 'Password', name: 'Password', emptyText: 'password', inputType: 'password', bind: '{RegisterFromViewModel.Password}' },
+            { allowBlank: false, fieldLabel: 'Verify', name: 'ConfirmPassword', emptyText: 'password', inputType: 'password', bind: '{RegisterFromViewModel.ConfirmPassword}'}
         ]
    /* }, {
         xtype: 'fieldset',

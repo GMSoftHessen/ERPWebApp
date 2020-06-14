@@ -205,12 +205,13 @@
   "js": [
     {
       "path": "${framework.dir}/build/ext-all-rtl-debug.js"
+     
     },
     {
       "path": "app/CustomVTypes.js",
       "includeInBundle": true
-    },       
-     {
+    },
+    {
       "path": "resources/locale/locale.js",
       "includeInBundle": true
     },

@@ -17,8 +17,8 @@
                 icon: Ext.Msg.ERROR,
                 buttons: Ext.Msg.OK
             });
-        },
+        }       
+    },
 
-        BaseUrl:'http://localhost:51343/api/',
-    }
+    BaseUrl: 'http://localhost:61443/api/',
 });

@@ -2,8 +2,7 @@
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
 
-    requires: [
-        'App.view.login.CapsLockTooltip',
+    requires: [        
         'App.util.Util',
         'App.util.SessionMonitor'
     ],
@@ -25,18 +24,18 @@
 
         this.getView().mask('Registration... Please wait...');
         var me = this,
-            form = me.lookupReference('RegisterFieldset');
+            fieldSetRegister = me.lookupReference('RegisterFieldset');
         console.log('onButtonClickDoRegisteration');
-        console.log(form);
+        console.log(me);
 
-        form.submit({
-            clientValidation: true,
-            url: App.util.Util.BaseUrl + 'Register/Account'
-            /*,
-            scope: me,
-            success: 'onLoginSuccess',
-            failure: 'onLoginFailure'*/
-        });
+        //form.submit({
+        //    clientValidation: true,
+        //    url: App.util.Util.BaseUrl + 'Register/Account'
+        //    /*,
+        //    scope: me,
+        //    success: 'onLoginSuccess',
+        //    failure: 'onLoginFailure'*/
+        //});
 
         
     },
