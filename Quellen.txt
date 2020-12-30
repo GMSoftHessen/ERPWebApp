@@ -1,5 +1,11 @@
 1) Entity Framework in the Enterprise von julie Lerman 2016 https://app.pluralsight.com/library/courses/entity-framework-enterprise-update/table-of-contents
 2) Extjs Client Oauth https://gist.github.com/havvg/3925800d1657c53e8df1
 
-Uplift :
-        https://subscription.packtpub.com/video/web_development/9781800202771/p2/video2_2/-create-class-libraries
+ Uplift   :
+             https://subscription.packtpub.com/video/web_development/9781800202771/p2/video2_2/-create-class-libraries
+ package :  
+           1) 
+              Microsoft.AspNetCore.MVC.Razor.RuntimeCompilation  
+              services.AddControllersWithViews().AddRazorRuntimeCompilation()
+           2)  
+              Microsoft.AspNetCore.Mvc.Newtonsoftjson
